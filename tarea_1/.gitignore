@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Tarea 1: archivos pesados que no se suben a GitHub (limite de 100 MB)
+datos/raw/*.html
+modelo/*.safetensors
+modelo/*.bin
+modelo/checkpoint-*/
+modelo/checkpoints/
