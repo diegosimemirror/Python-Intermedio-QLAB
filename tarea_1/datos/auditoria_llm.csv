@@ -1,0 +1,21 @@
+﻿n,titular,etiqueta_llm,confianza,modelo_llm,fecha,etiqueta_humana,coincide
+1,"Perú recibió 2,26 millones de turistas extranjeros hasta agosto, 0,4% menos que en 2025",economia,0.9914,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,economia,True
+2,Sueldo mínimo: Sheput anuncia primer aumento de S/100 y revela que el segundo de S/70 se dará el próximo año,economia,0.9975,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,economia,True
+3,Buenas noticias para la ciencia en América Latina: un país ingresa a una red mundial que investiga el clima y los océanos de la Antártida,ciencia_tecnologia,0.9999,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,True
+4,"Economía peruana creció 3,23% en agosto, pero minería y pesca retrocedieron",economia,0.9999,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,economia,True
+5,Un paleontólogo aficionado encontró el fósil casi completo de un titanosaurio de 10 metros de altura mientras paseaba con su perro,ciencia_tecnologia,0.8286,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,True
+6,"La humanidad roza sus límites: la población mundial alcanzaría los 12.400 millones en 2070, mientras científicos sugieren reducirla a 4.000 millones para 2200",economia,0.53,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,False
+7,Comisión de Constitución del Senado EN VIVO: congresistas retoman debaten sobre dictamen de delegación de facultades,politica,0.994,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,politica,True
+8,"El ambicioso proyecto que busca generar electricidad con el océano para 32.000 hogares, alimentar centros de IA y producir agua potable",economia,0.7492,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,False
+9,Facultades legislativas: GEPS cuestiona pedido del Ejecutivo por falta de precisión en cambios tributarios y laborales,politica,0.8411,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,politica,True
+10,Universitario - Palmeiras: a qué hora y dónde ver el partido por la fecha 1 de la Copa Libertadores Femenina 2026,deportes,0.9996,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,deportes,True
+11,"La Antártida se encuentra cubierta de hielo de hasta 4 km de espesor, pero no se compara en nada con lo que orbita cerca de Júpiter",ciencia_tecnologia,0.9965,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,True
+12,"Papa León XIV fue operado con éxito de nódulo en el pulmón, informó el Vaticano",ciencia_tecnologia,0.6704,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,politica,False
+13,Francis Halzen gana el Premio Nobel de Física 2026 por descubrir neutrinos cósmicos con un detector bajo el hielo de la Antártida,ciencia_tecnologia,0.9994,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,True
+14,Científicos identifican 57 nuevas especies de aguas profundas en los cañones submarinos de Mar del Plata: incluye un pepino de mar translúcido,ciencia_tecnologia,1.0,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,True
+15,Barcelona sigue con su impresionante récord de victorias: goleó 4-1 a Galatasaray por la Champions League,deportes,0.9444,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,deportes,True
+16,Se abrió un agujero del tamaño de dos Suizas en la Antártida: los científicos por fin conocen la causa,ciencia_tecnologia,0.9976,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,ciencia_tecnologia,True
+17,Día del Shopping movería S/320 millones: ¿qué productos concentrarán las compras este fin de semana?,economia,0.9279,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,economia,True
+18,Jurados Electorales Especiales iniciaron este lunes 12 de octubre el recuento de votos en todo el país,politica,0.8829,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,politica,True
+19,BTS mueve el turismo en Lima: más de 521.000 usuarios buscaron entradas y el ticket promedio llegó a S/844,economia,0.4639,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,economia,True
+20,Luis Galarreta contradice a Keiko Fujimori: admite que el Gobierno puede actuar sin facultades,politica,0.9972,Qwen/Qwen2.5-1.5B-Instruct,2026-10-18,politica,True
