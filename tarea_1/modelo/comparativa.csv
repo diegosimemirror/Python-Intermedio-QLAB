@@ -1,0 +1,4 @@
+﻿modelo,id_hugging_face,entrenamiento_propio,parametros_millones,accuracy_40,f1_macro_40,accuracy_test60,f1_macro_test60,latencia_ms
+Zero-shot (NLI),Recognai/bert-base-spanish-wwm-cased-xnli,Ninguno,109.853187,0.65,0.6390568084941486,,,169.14986749998207
+LLM débil (Qwen local),Qwen/Qwen2.5-1.5B-Instruct,Ninguno (prompt),1543.714304,0.8,0.8060807656395892,0.7666666666666667,0.7678656597774245,3157.565852500011
+Transformer fine-tuned,distilbert/distilbert-base-multilingual-cased,"280 titulares, 3 épocas (1.4 min CPU)",135.327748,0.975,0.974937343358396,0.95,0.9494949494949495,21.057612500044343

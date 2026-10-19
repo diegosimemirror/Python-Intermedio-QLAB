@@ -1,0 +1,16 @@
+{
+  "f1_macro_test": 0.9495,
+  "accuracy_test": 0.95,
+  "f1_macro_zero_shot_40": 0.6391,
+  "accuracy_zero_shot_40": 0.65,
+  "f1_macro_llm_test": 0.7679,
+  "acuerdo_llm_humano": 0.85,
+  "aciertos_auditoria": 17,
+  "n_entrenamiento": 280,
+  "n_validacion": 60,
+  "n_prueba": 60,
+  "modelo_base": "distilbert/distilbert-base-multilingual-cased",
+  "modelo_llm": "Qwen/Qwen2.5-1.5B-Instruct",
+  "modelo_zero_shot": "Recognai/bert-base-spanish-wwm-cased-xnli",
+  "fecha": "2026-10-18"
+}
