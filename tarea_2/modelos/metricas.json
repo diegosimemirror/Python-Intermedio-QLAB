@@ -1,0 +1,12 @@
+{
+  "cer": {
+    "PaddleOCR 3.7 PP-OCRv5 mobile (línea base)": 0.228,
+    "EasyOCR 1.7 (es)": 0.334
+  },
+  "wer": {
+    "Parakeet TDT 0.6B v3": 0.052,
+    "faster-whisper small (línea base)": 0.065
+  },
+  "acuerdo_llm_humano": 7,
+  "auditados": 20
+}

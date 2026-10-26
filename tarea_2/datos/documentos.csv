@@ -1,4 +1,4 @@
-id,archivo,tipo,fuente,texto_ocr,modelo_ocr,texto_referencia,titulo,licencia,pagina_commons,n_lineas,n_caracteres,confianza_media,segundos_ocr,entidades_reemplazadas
+id,archivo,tipo,fuente,texto_ocr,modelo_ocr,texto_referencia,titulo,licencia,pagina_commons,n_lineas,n_caracteres,confianza_media,segundos_ocr,entidades_reemplazadas,region_referencia
 doc_001,datos/raw/documentos/doc_001.jpg,impreso,Wikimedia Commons (PD-Peru-organization),"N1-1+ 
 Año IV 
 Lima, 29 de febrero de 1908 
@@ -39,7 +39,7 @@ rio nacional y extranjero y una rica información mundial proporcionada no so
 por publicaciones y revistas de todo el mundo, sino por corresponsales espec. 
 les que hemos contratado en el extranjero. He aquí las diferentes secciones que 
 constantemente serán ofrecidas á nuestros lectores: 
-UNMSM-CEDOC","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Variedades No. 0 (Número Prospecto).pdf,PD-Peru-organization,https://commons.wikimedia.org/wiki/File:Variedades_No._0_%28N%C3%BAmero_Prospecto%29.pdf,41,1947,0.871,38.83,0
+UNMSM-CEDOC","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Variedades No. 0 (Número Prospecto).pdf,PD-Peru-organization,https://commons.wikimedia.org/wiki/File:Variedades_No._0_%28N%C3%BAmero_Prospecto%29.pdf,41,1947,0.871,38.83,0,
 doc_002,datos/raw/documentos/doc_002.jpg,impreso,Wikimedia Commons (PD-Peru-organization + PD-US),"Año IV 
 Lima 9 de mayo de 1908 
 N. 10 
@@ -123,7 +123,7 @@ te el tren en Lima con sus resueltos
 hora de las reinvidicaciones, del resta- 
 adeptos llegó i Chosica. interrumpió 
 blecimiento de las libertades públicas 
-UNMSM-CEDOC","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Variedades No. 10.pdf,PD-Peru-organization + PD-US,https://commons.wikimedia.org/wiki/File:Variedades_No._10.pdf,84,3104,0.983,64.63,0
+UNMSM-CEDOC","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Variedades No. 10.pdf,PD-Peru-organization + PD-US,https://commons.wikimedia.org/wiki/File:Variedades_No._10.pdf,84,3104,0.983,64.63,0,
 doc_003,datos/raw/documentos/doc_003.jpg,impreso,Wikimedia Commons (PD-Peru-organization),"AñoVI 
 Lima, 29 de enero de 1910 
 N.°100 
@@ -208,7 +208,7 @@ para tejer prematuras coronas á los
 efectivamente el Gobierno del Ecua- 
 vencedores ó á tocar en la guitarra ó 
 dor no apoya esas manifestaciones de 
-UNMSM-CEDOC","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Variedades No. 100.pdf,PD-Peru-organization,https://commons.wikimedia.org/wiki/File:Variedades_No._100.pdf,85,3095,0.982,67.77,0
+UNMSM-CEDOC","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Variedades No. 100.pdf,PD-Peru-organization,https://commons.wikimedia.org/wiki/File:Variedades_No._100.pdf,85,3095,0.982,67.77,0,
 doc_004,datos/raw/documentos/doc_004.jpg,impreso,Wikimedia Commons (PD-old-100),"Eate peridion se 
 lopacia ch esta Capkal 
 Dari, drevas remitrae 4 la Impre 
@@ -400,7 +400,7 @@ y cuano peeda ocodur à la gllad é paru
 quo aarta watindeches dit wi grdu 
 cangetato agarenae, W des à Baco 
 Cr do avedro loc p 
-otred","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,El Comercio Issue 1.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:El_Comercio_Issue_1.jpg,192,6513,0.652,111.98,0
+otred","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,El Comercio Issue 1.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:El_Comercio_Issue_1.jpg,192,6513,0.652,111.98,0,
 doc_005,datos/raw/documentos/doc_005.jpg,impreso,Wikimedia Commons (PD-old-100),"EL LIBERTADOR BAMON GASTILLA, 
 GRAN MARISCAL DELOS EJERCITOS, 
 CONDECORADO-CON LAS MEDALLAS DE JUNIN, 
@@ -442,7 +442,18 @@ r
       
 coee    
  
-bLHODE LE TEMDO","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Constitución Política del Perú (1856).pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:Constituci%C3%B3n_Pol%C3%ADtica_del_Per%C3%BA_%281856%29.pdf,42,752,0.679,25.71,0
+bLHODE LE TEMDO","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","El Libertador Ramon Castilla, 
+Gran Mariscal de los Ejercitos,
+Condecorado con las Medallas de JUNIN, 
+AYACUCHO Y ANCAHS; Y PRESIDENTE
+PROVISORIO DE LA REPUBLICA.
+
+Por cuanto: la Convencion Nacional ha san-
+cionado la siguiente Constitucion.-
+
+BAJO LA PROTECCION DE DIOS
+
+LA CONVENCION NACIONAL,",Constitución Política del Perú (1856).pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:Constituci%C3%B3n_Pol%C3%ADtica_del_Per%C3%BA_%281856%29.pdf,42,752,0.679,25.71,0,"[0.05, 0.05, 0.95, 0.41]"
 doc_006,datos/raw/documentos/doc_006.jpg,impreso,Wikimedia Commons (PD-old-100),"EL CIUDADANO JOSE DE LA-MAR, 
 PRESIDENTE DE LA REPUBLICA. 
 Por cuanto el Congreso ha dado la 
@@ -464,7 +475,17 @@ CONSTITUCION.
 TITULO PRIMERO. 
 De la Nacion y su Religion. 
 Arr. 1. La Nacion Peruana es la asociacion po- 
-lítica de todos los ciudadanos del Perú.","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Constitución Política de la República Peruana (1828).pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:Constituci%C3%B3n_Pol%C3%ADtica_de_la_Rep%C3%BAblica_Peruana_%281828%29.pdf,22,515,0.962,16.4,0
+lítica de todos los ciudadanos del Perú.","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","EL CIUDADANO JOSE DE LA-MAR,
+
+PRESIDENTE DE LA REPUBLICA.
+
+Por cuanto el Congreso ha dado la
+siguiente-
+CONSTITUCION POLITICA 
+DE LA 
+REPUBLICA PERUANA
+
+EN EL NOMBRE DE DIOS TODO-PODEROSO,",Constitución Política de la República Peruana (1828).pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:Constituci%C3%B3n_Pol%C3%ADtica_de_la_Rep%C3%BAblica_Peruana_%281828%29.pdf,22,515,0.962,16.4,0,"[0.05, 0.08, 0.95, 0.415]"
 doc_007,datos/raw/documentos/doc_007.jpg,impreso,Wikimedia Commons (CC0 (Biblioteca Nacional del Perú)),"62 
 3 
 Maldonado, 4 de julio de 19l4. 
@@ -493,7 +514,17 @@ sus amigos predilectos que piensen sin cerebro y hablan sin boca;
 ye esté U. nuevamente en su casa, porque casa suya es, indiscuti- 
 biemente, ese viejo palacio de las ciencies y las letras. allí os- 
 pero darle pronto cariñoso abrazo, y miemtras tal sucede, hago fer- 
--","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,"4000004161-0016 - Carta de Carlos J. Bachmann. 1914 julio 4, Maldonado; para Ricardo Palma, Lima.pdf",CC0 (Biblioteca Nacional del Perú),https://commons.wikimedia.org/wiki/File:4000004161-0016_-_Carta_de_Carlos_J._Bachmann._1914_julio_4%2C_Maldonado%3B_para_Ricardo_Palma%2C_Lima.pdf,29,1475,0.89,35.15,0
+-","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","Maldonado, 4 de julio de 1914.
+
+Señor Don Ricardo Palma, 
+
+Lima.
+
+Muy distinguido señor y respetado amigo:
+
+Siento inmenso placer al dirigirle la presente, mensajera
+de mis más efusivas y cordiales felicitaciones por el acto de jus-
+ta reparación que acaba de darle el Gobierno Provisorio con su de-","4000004161-0016 - Carta de Carlos J. Bachmann. 1914 julio 4, Maldonado; para Ricardo Palma, Lima.pdf",CC0 (Biblioteca Nacional del Perú),https://commons.wikimedia.org/wiki/File:4000004161-0016_-_Carta_de_Carlos_J._Bachmann._1914_julio_4%2C_Maldonado%3B_para_Ricardo_Palma%2C_Lima.pdf,29,1475,0.89,35.15,0,"[0.05, 0.08, 0.95, 0.4]"
 doc_008,datos/raw/documentos/doc_008.jpg,impreso,Wikimedia Commons (PD-Peru-1961law),"Rarci, le 10 dioianbre do 1926. 
 li,Avenu 
 de l'péne 
@@ -528,7 +559,12 @@ que ese libro esté listo Luy en breve.
 Un ufectuoso saludo pura todos los 
 buanos uigos da ""aLauta"" y pura usted un ostrecho a- 
 brazo de au devoto coupuñero. 
-Ceiar Vallejo","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Carta de César Vallejo a José Carlos Mariátegui.pdf,PD-Peru-1961law,https://commons.wikimedia.org/wiki/File:Carta_de_C%C3%A9sar_Vallejo_a_Jos%C3%A9_Carlos_Mari%C3%A1tegui.pdf,35,1447,0.892,36.67,0
+Ceiar Vallejo","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","Paris, [?] 10 diciembre de 1926.
+
+Mi querido compañero:
+
+Agradezco a usted en lo que vale el
+bondadoso juicio que me envia publicado en",Carta de César Vallejo a José Carlos Mariátegui.pdf,PD-Peru-1961law,https://commons.wikimedia.org/wiki/File:Carta_de_C%C3%A9sar_Vallejo_a_Jos%C3%A9_Carlos_Mari%C3%A1tegui.pdf,35,1447,0.892,36.67,0,"[0.305, 0.1, 0.95, 0.33]"
 doc_009,datos/raw/documentos/doc_009.jpg,foto,Wikimedia Commons (CC BY-SA 4.0 (foto: Pitxiquin)),"CARTA ESCRITA POREL GENEHAL 
 FELIPE SANTIACO SALAVERRY 
 HORAS ANTES DE SU MUERTE 
@@ -566,7 +602,18 @@ DE TU DESVENTURADO
 ESPOSO. 
 FELIPE SANTIAGO 
 SALAVERRY 
-3","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Carta de Felipe Santiago Salaverry a la seva esposa abans de la seva mort a Arequipa.jpg,CC BY-SA 4.0 (foto: Pitxiquin),https://commons.wikimedia.org/wiki/File:Carta_de_Felipe_Santiago_Salaverry_a_la_seva_esposa_abans_de_la_seva_mort_a_Arequipa.jpg,38,1190,0.948,31.41,0
+3","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","CARTA ESCRITA POR EL GENERAL 
+FELIPE SANTIAGO SALAVERRY
+HORAS ANTES DE SU MUERTE
+AREQUIPA, FEBRERO 17-1886
+MI QUERIDA ESPOSA.
+DENTRO DE POCOS MOMENTOS VOY A SER 
+PASADO POR LAS ARMAS, Y TE DEBO EL ULTIMO
+ADIOS: ES ESTE.
+TU CONOCIAS BIEN MI CORAZON Y NO PUEDES
+DUDAR DE QUE MIS INTENCIONES EN TODA MI VIDA
+PUBLICA, HAN SIDO MUY PURAS: ELLAS SE HAN 
+DIRIGIDO A LA FELICIDAD Y A LA GLORIA DE MI PAIS.",Carta de Felipe Santiago Salaverry a la seva esposa abans de la seva mort a Arequipa.jpg,CC BY-SA 4.0 (foto: Pitxiquin),https://commons.wikimedia.org/wiki/File:Carta_de_Felipe_Santiago_Salaverry_a_la_seva_esposa_abans_de_la_seva_mort_a_Arequipa.jpg,38,1190,0.948,31.41,0,"[0.12, 0.19, 0.88, 0.465]"
 doc_010,datos/raw/documentos/doc_010.jpg,foto,Wikimedia Commons (CC BY-SA 3.0 (foto: Dtarazona)),"del Srgeria 
 A mi regreso de Arica, recogeré los encargos que me mandes. No olvides 
 isio,,11 
@@ -661,7 +708,7 @@ Hacienda Para, Tacna, 28 de mayo de 1880.
 y denuedo de sue ufo 
 rrtios fopio. 
 Al Señor 
-G. Fernando Hellman","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AAMSM carta a hermano 31072010.jpg,CC BY-SA 3.0 (foto: Dtarazona),https://commons.wikimedia.org/wiki/File:AAMSM_carta_a_hermano_31072010.jpg,95,1604,0.585,42.82,0
+G. Fernando Hellman","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AAMSM carta a hermano 31072010.jpg,CC BY-SA 3.0 (foto: Dtarazona),https://commons.wikimedia.org/wiki/File:AAMSM_carta_a_hermano_31072010.jpg,95,1604,0.585,42.82,0,
 doc_011,datos/raw/documentos/doc_011.jpg,foto,Wikimedia Commons (CC0 (Abelchristian111)),"Da de aD0 
 1832.anos: me he echo Cango d a 
 doctrina de C'lottago de aap 
@@ -699,7 +746,7 @@ EoMellade Sotan d Lompn, en meve diay de more My
 cont ofimo 
 7 
 Sa illad Cahs a dope, en din y y dl e 
-de Monpe de mil bhe fainta y rorat. to hnt de","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Libro de Bautismos en la Gran Villa de Lampa 1832.jpg,CC0 (Abelchristian111),https://commons.wikimedia.org/wiki/File:Libro_de_Bautismos_en_la_Gran_Villa_de_Lampa_1832.jpg,38,899,0.537,23.73,0
+de Monpe de mil bhe fainta y rorat. to hnt de","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Libro de Bautismos en la Gran Villa de Lampa 1832.jpg,CC0 (Abelchristian111),https://commons.wikimedia.org/wiki/File:Libro_de_Bautismos_en_la_Gran_Villa_de_Lampa_1832.jpg,38,899,0.537,23.73,0,
 doc_012,datos/raw/documentos/doc_012.jpg,foto,Wikimedia Commons (CC0 (Abelchristian111)),"911 
 OLLENDORFF REFORMADO. 
 GRAMÁTICA 
@@ -728,7 +775,20 @@ CÁDIZ.
 ents 
 ENRIQUE LEON, EDITOR. 
 1865. 
-ne","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,"Libro de Gramática Latina, por F. de P. Hidalgo del año 1865.jpg",CC0 (Abelchristian111),https://commons.wikimedia.org/wiki/File:Libro_de_Gram%C3%A1tica_Latina%2C_por_F._de_P._Hidalgo_del_a%C3%B1o_1865.jpg,29,273,0.857,14.72,0
+ne","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","OLLENDORFF REFORMADO.
+
+GRAMÁTICA
+LATINA,
+Y
+MÉTODO PARA APRENDERLA,
+POR
+F. DE P. HIDALGO.
+
+CLAVE DE LOS TEMAS.
+
+CÁDIZ.
+ENRIQUE LEON, EDITOR.
+1865.","Libro de Gramática Latina, por F. de P. Hidalgo del año 1865.jpg",CC0 (Abelchristian111),https://commons.wikimedia.org/wiki/File:Libro_de_Gram%C3%A1tica_Latina%2C_por_F._de_P._Hidalgo_del_a%C3%B1o_1865.jpg,29,273,0.857,14.72,0,"[0.1, 0.1, 0.9, 0.95]"
 doc_013,datos/raw/documentos/doc_013.jpg,foto,Wikimedia Commons (CC BY-SA 4.0 (foto: Ciberprofe)),"MONITUR HUASCAR. 
 PISAGUA, JUNIO 2 DE 1879. 
 SEÑORA 
@@ -756,7 +816,16 @@ LOGRO, SENORA, LA OPORTUNIDAD PARA OFRECERLE MIS SERV
 CIOS, CONSIDERACIONES Y RESPETO CON QUE ME SUSCRIBO 
 UD. SEÑORA, MUY AFECTISIMO Y SEGURO SERVIDOR 
 MIGUELGRAU 
-LA CREACION Y COMPOSICION","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Carta de Grau a viuda de Prat en monumento chileno.JPG,CC BY-SA 4.0 (foto: Ciberprofe),https://commons.wikimedia.org/wiki/File:Carta_de_Grau_a_viuda_de_Prat_en_monumento_chileno.JPG,28,1226,0.98,28.29,0
+LA CREACION Y COMPOSICION","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","PISAGUA, JUNIO 2 DE 1879.
+
+SEÑORA
+CARMELA CARVAJAL DE PRAT
+
+DIGNISIMA SEÑORA:
+""UN SAGRADO DEBER ME AUTORIZA A DIRIGIRME A UD. 
+Y SIENTO PROFUNDAMENTE QUE ESTA CARTA, POR LAS LUCHAS
+QUE VA A REMEMORAR, CONTRIBUYA A AUMENTAR EL DOLOR QUE
+HOY JUSTAMENTE DEBE DOMINARLA. EN EL COMBATE NAVAL DEL",Carta de Grau a viuda de Prat en monumento chileno.JPG,CC BY-SA 4.0 (foto: Ciberprofe),https://commons.wikimedia.org/wiki/File:Carta_de_Grau_a_viuda_de_Prat_en_monumento_chileno.JPG,28,1226,0.98,28.29,0,"[0.0, 0.03, 1.0, 0.325]"
 doc_014,datos/raw/documentos/doc_014.jpg,foto,Wikimedia Commons (CC BY-SA 4.0 (foto: AlejandroFC)),"RT.LEY 
 FRED 
 PERVANA 
@@ -802,7 +871,7 @@ POR INICIATIVA DE SV GERENTE
 GENERAL FERNANDO 
 PALAZVELOY 
 EGVN PROVECTO DE LA ART. LVCIANA VOLD 
-WWWUVASROANDARTCON","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Placa del Edificio Fénix.jpg,CC BY-SA 4.0 (foto: AlejandroFC),https://commons.wikimedia.org/wiki/File:Placa_del_Edificio_F%C3%A9nix.jpg,46,914,0.942,26.57,0
+WWWUVASROANDARTCON","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Placa del Edificio Fénix.jpg,CC BY-SA 4.0 (foto: AlejandroFC),https://commons.wikimedia.org/wiki/File:Placa_del_Edificio_F%C3%A9nix.jpg,46,914,0.942,26.57,0,
 doc_015,datos/raw/documentos/doc_015.jpg,foto,Wikimedia Commons (Carta: PD-Peru-organization; foto: CC BY 4.0 (Mayimbú))," 
 NCIA DE LA REPUBLICA 
 Lima, 5 de diciembre de 1972. 
@@ -825,7 +894,7 @@ película cuyo éxito nos place comentar.
 Cordialmente, 
 Elo 
 GRAL. DIV. JUAN VELASCO ALVARADO 
-Presidente de la República","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Exposición 100 años Armando Robles Godoy - Carta de Juan Velasco Alvarado.jpg,Carta: PD-Peru-organization; foto: CC BY 4.0 (Mayimbú),https://commons.wikimedia.org/wiki/File:Exposici%C3%B3n_100_a%C3%B1os_Armando_Robles_Godoy_-_Carta_de_Juan_Velasco_Alvarado.jpg,23,904,0.934,24.43,0
+Presidente de la República","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Exposición 100 años Armando Robles Godoy - Carta de Juan Velasco Alvarado.jpg,Carta: PD-Peru-organization; foto: CC BY 4.0 (Mayimbú),https://commons.wikimedia.org/wiki/File:Exposici%C3%B3n_100_a%C3%B1os_Armando_Robles_Godoy_-_Carta_de_Juan_Velasco_Alvarado.jpg,23,904,0.934,24.43,0,
 doc_016,datos/raw/documentos/doc_016.jpg,foto,Wikimedia Commons (CC BY 2.0 (Ministerio de Defensa del Perú))," Mate Hresor 
 Drmada des Bera. 
 ESTADO GENERAL 
@@ -924,7 +993,7 @@ X
 linge 
 YVR 
 Daden toelades 23td 
-E          .","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Estado General de Miguel Grau.jpg,CC BY 2.0 (Ministerio de Defensa del Perú),https://commons.wikimedia.org/wiki/File:Estado_General_de_Miguel_Grau.jpg,99,900,0.513,39.69,0
+E          .","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Estado General de Miguel Grau.jpg,CC BY 2.0 (Ministerio de Defensa del Perú),https://commons.wikimedia.org/wiki/File:Estado_General_de_Miguel_Grau.jpg,99,900,0.513,39.69,0,
 doc_017,datos/raw/documentos/doc_017.jpg,manuscrito,"Wikimedia Commons (PD-old-100 (Academia Nacional de la Historia, Argentina))","Unl D Soming Fitan 
 Ceadyua Cnano 2nde1822 
 2o original de thabed y? lo han txaido esde la Ha 
@@ -938,7 +1007,13 @@ ves lo pexdexomor yaiempxe.
 Aion mi anigo Siganev. siseha 
 Anvigo 
 amanxaf 
-","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-53-2.jpg,"PD-old-100 (Academia Nacional de la Historia, Argentina)",https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-53-2.jpg,14,441,0.641,12.17,0
+","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","[?] [?] Domingo Tristan
+
+[?] [?] [?] del 822
+
+Mi mejor amigo incluyo a [?] [?]
+[?] original de [?] lo han traido desde la [?]
+de Carabeli y el oficio del Comandan.te Gonzales",AR-ANH-EF-Secc.II-53-2.jpg,"PD-old-100 (Academia Nacional de la Historia, Argentina)",https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-53-2.jpg,14,441,0.641,12.17,0,"[0.0, 0.0, 1.0, 0.355]"
 doc_018,datos/raw/documentos/doc_018.jpg,manuscrito,Wikimedia Commons (PD-old-100),"beme 1nD. Austin 
 Hmanse 
 Suxiti le de Agost deto 
@@ -963,7 +1038,7 @@ Sesea a t.
 inbaxiable dxcison 
 devidied iligads 
 RK 
-dat bl","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-64.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-64.jpg,25,577,0.6,18.45,0
+dat bl","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-64.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-64.jpg,25,577,0.6,18.45,0,
 doc_019,datos/raw/documentos/doc_019.jpg,manuscrito,Wikimedia Commons (PD-old-100),"30 
 LimeAguts 10 d 1 
 Sr IM Rodriguer R. 
@@ -978,7 +1053,22 @@ Recomiéndolo mni especialmente a su
 distingui da emsidevacion i a la de ens anto- 
 ridaded snbalternad. 
 Afectussaminte suge 
-Tierola","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-69.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-69.jpg,15,385,0.815,11.99,0
+Tierola","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","Lima, Agosto 10 de 1897
+
+Sr J.M. Rodriguez R.
+Prefecto del Depto. [?] Lambayeque
+Mi querido Sr Prefecto: 
+El Sr Pedro Adolfo Espinoza,
+despues de conversar conmigo, regresa a Motu-
+pe lugar de su residencia para ocuparse de a-
+suntos particulares.
+Recomiendolo mui especialmente a su 
+distinguida consideracion i a la de sus auto-
+ridades subalternas.
+
+Afectuosamente suyo
+
+Piérola",AR-ANH-EF-Secc.II-69.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-69.jpg,15,385,0.815,11.99,0,"[0.0, 0.0, 1.0, 0.75]"
 doc_020,datos/raw/documentos/doc_020.jpg,manuscrito,Wikimedia Commons (PD-old-100),"ovi   o E pa nee Ce de  
 Cindad. Corforme alodi pue to por fumag poxsunzeal. Cedula fha enmaded, atrece refebrexo del Hro parado 
 i e uePguano u ni dega Pen pon enagudi 
@@ -1020,7 +1110,7 @@ Bantory
 enlseitenceredegled 
 JOoflecru 
   
-Comonn a   po=","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-20.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-20.jpg,42,1129,0.472,33.28,0
+Comonn a   po=","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-20.jpg,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-20.jpg,42,1129,0.472,33.28,0,
 doc_021,datos/raw/documentos/doc_021.jpg,manuscrito,Wikimedia Commons (PD-old-100),"fos A Dorter Do Melch se Erian g Cher palag 
 Leme deref af dperter  
  
@@ -1059,7 +1149,7 @@ Melcen aany
 Bgco86o) 
 Dhno 
 8 hgedent. ellevia sela Gepe obe verabis a liene  f  
-(col.Crbadio)","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-24-1.pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-24-1.pdf,39,2650,0.699,41.0,0
+(col.Crbadio)","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-24-1.pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-24-1.pdf,39,2650,0.699,41.0,0,
 doc_022,datos/raw/documentos/doc_022.jpg,manuscrito,Wikimedia Commons (PD-old-100),"50   00 
 S0so wts4ow8v 
 80201802700800300 
@@ -1087,7 +1177,7 @@ gu ded eg  o
 po gdednfiefufsis 
 43000 
 bernacimnvdesomp 
-onle","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-2.pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-2.pdf,28,324,0.483,22.26,0
+onle","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-2.pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-2.pdf,28,324,0.483,22.26,0,
 doc_023,datos/raw/documentos/doc_023.jpg,manuscrito,Wikimedia Commons (PD-old-100)," 
 gal 
 ma   
@@ -1111,7 +1201,7 @@ CpenorTa
 f 
 - 
  
-","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-14-1.pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-14-1.pdf,24,181,0.33,21.07,0
+","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,AR-ANH-EF-Secc.II-14-1.pdf,PD-old-100,https://commons.wikimedia.org/wiki/File:AR-ANH-EF-Secc.II-14-1.pdf,24,181,0.33,21.07,0,
 doc_024,datos/raw/documentos/doc_024.jpg,manuscrito,Wikimedia Commons (PD-Peru-1961law + PD-US-expired),"Terunas 
 Chibnas 
 Mrsitr Husssi 
@@ -1162,7 +1252,7 @@ puas d Lei
 bas fasa Vl. inst 
 aable prendst,go 
 Se sehtrsn  
--","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Miguel Grau - Brev.jpg,PD-Peru-1961law + PD-US-expired,https://commons.wikimedia.org/wiki/File:Miguel_Grau_-_Brev.jpg,51,702,0.5,23.27,0
+-","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Miguel Grau - Brev.jpg,PD-Peru-1961law + PD-US-expired,https://commons.wikimedia.org/wiki/File:Miguel_Grau_-_Brev.jpg,51,702,0.5,23.27,0,
 doc_025,datos/raw/documentos/doc_025.jpg,manuscrito,Wikimedia Commons (PD-Peru-1961law + PD-US),"Fuyillr, 2ig de fiti  
 H. fri Mai 
 Egos 
@@ -1185,4 +1275,8 @@ S
 man e gu fui fubliare. 
 pcitn k t. sn afctio 
 biital 
-Carta de César Vallejo a José María Eguren.","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)",,Carta de César Vallejo a José María Eguren.pdf,PD-Peru-1961law + PD-US,https://commons.wikimedia.org/wiki/File:Carta_de_C%C3%A9sar_Vallejo_a_Jos%C3%A9_Mar%C3%ADa_Eguren.pdf,23,636,0.612,18.44,0
+Carta de César Vallejo a José María Eguren.","PaddleOCR 3.7.0 (PP-OCRv5 mobile det + latin rec, orientación on, CPU, lado ≤ 2000 px)","Trujillo, 29 de julio [?]
+Sr. José María Eguren
+Barranco
+[?] conmovido leí su atenta carta, 
+cuyos términos le agradezco de veras. Ella me ha",Carta de César Vallejo a José María Eguren.pdf,PD-Peru-1961law + PD-US,https://commons.wikimedia.org/wiki/File:Carta_de_C%C3%A9sar_Vallejo_a_Jos%C3%A9_Mar%C3%ADa_Eguren.pdf,23,636,0.612,18.44,0,"[0.0, 0.05, 1.0, 0.33]"

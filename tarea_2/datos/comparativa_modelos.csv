@@ -1,0 +1,5 @@
+modalidad,modelo,casos,tamano,metrica,valor,latencia
+audio,Parakeet TDT 0.6B v3,10,"600 M parámetros (fp32 ≈ 2,4 GB)",WER,0.052,RTF 0.23
+audio,faster-whisper small (línea base),10,244 M parámetros (int8 ≈ 250 MB),WER,0.065,RTF 0.29
+documento,PaddleOCR 3.7 PP-OCRv5 mobile (línea base),10,≈ 20 MB (det + rec mobile),CER,0.228,9.2 s por recorte
+documento,EasyOCR 1.7 (es),10,≈ 95 MB (CRAFT + latin_g2),CER,0.334,21.0 s por recorte
