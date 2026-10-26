@@ -2,6 +2,7 @@
 
 **Estudiante:** Diego Enrique Sime Rendón (@diegosimemirror)
 **Dashboard público:** https://python-intermedio-qlab-aeod9u3y4jl5hta8gpphg4.streamlit.app/
+**Bitácora de desarrollo:** [BITACORA.md](BITACORA.md)
 
 ## Pregunta del proyecto
 
@@ -102,6 +103,7 @@ tarea_2/
 ├── extraccion_llm.py          # Prompt + LLM local + lectura del JSON (con caché)
 ├── requirements.txt           # Dependencias del dashboard
 ├── .gitignore                 # Excluye datos/raw/, audios crudos y pesos de modelos
+├── BITACORA.md                # Bitácora por etapa (issues #4, #5 y #6)
 ├── evidencias_ia/             # Capturas de la conversación con Claude Code
 ├── datos/
 │   ├── documentos.csv         # 25 documentos (columnas obligatorias + apoyo)
