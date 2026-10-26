@@ -1,7 +1,7 @@
 # Tarea 2 · Voces y documentos peruanos: del archivo escaneado al texto buscable
 
 **Estudiante:** Diego Enrique Sime Rendón (@diegosimemirror)
-**Dashboard público:** ‹URL_STREAMLIT›
+**Dashboard público:** https://python-intermedio-qlab-aeod9u3y4jl5hta8gpphg4.streamlit.app/
 
 ## Pregunta del proyecto
 
