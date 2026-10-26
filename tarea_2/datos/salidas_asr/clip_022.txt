@@ -1,0 +1,27 @@
+[00:00:00] H1: Buenas noches, soy [PERSONA_1], estudiante de Los San Marcos, ¿cuál es su nombre?
+
+[00:00:04] H2: [PERSONA_2].
+
+[00:00:05] H1: Señor [PERSONA_2], esta entrevista va a ser publicada en un forum de internet, ¿está de acuerdo?
+
+[00:00:10] H3: Ya, está bien.
+
+[00:00:11] H1: Muy bien, la primera pregunta es ¿qué es el Perú para usted?
+
+[00:00:14] H3: El Perú es mi patria, es una patria donde aún nací mis ancestros, que nací hoy hoy, y está ubicado en un sitio de América que está delimitado por sus fronteras. Es de mi patria.
+
+[00:00:36] H1: En toda su vida, ¿cuáles serían las principales características positivas que pueda rescatar del Perú?
+
+[00:00:43] H3: Bueno, las características serían su gastronomía, la gastronomía a nivel mundial tiene prestigio, de muy conocido a nivel internacional, su música, también su literatura, y también los grandes científicos que ha aportado a nuestro país.
+
+[00:01:05] H1: ¿Y los aspectos negativos?
+
+[00:01:07] H3: Bueno, los aspectos negativos, digamos, el desempleo que hace Echa, a veces la inflación que hemos sufrido durante años, la inflación significa un aumento constante de los precios, y ese es uno de los aspectos negativos que no sopieron controlado, hemos vivido bastante tiempo con la inflación.
+
+[00:01:29] H1: Si pudiera darle un comentario a la juventud, ¿cuál sería?
+
+[00:01:33] H3: Bueno, como dicen, ¿por qué Estados Unidos progresan y por qué el Perú? No, porque la gran mayoría de los países desarrollados, la mentalidad de la juventud está ligada a la producción, pero en nuestro país no necesariamente, porque el pensamiento de la juventud a veces piensa, por ejemplo, ser literato dice la juventud, quiero ser abogado, quiero ser periodista, pero eso no hay producción, ese no es un aspecto que no hay producción. Entonces, la juventud de hoy debe pensar en lo que es la producción, deben seguir carreras técnicas, ingeniería, ligadas a la producción, porque solamente si la juventud piensa en la producción, como lo hace la juventud de los Estados Unidos, como lo hace la juventud de los Estados Unidos, entonces podemos llegar a un desarrollo.
+
+[00:02:40] H1: Muchas gracias por sus palabras, felices fiestas.
+
+[00:02:42] H3: De igual manera.

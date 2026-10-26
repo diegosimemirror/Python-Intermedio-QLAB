@@ -1,0 +1,123 @@
+{
+  "semilla": 2026,
+  "documentos": {
+    "doc_005": {
+      "recorte_relativo": [
+        0.05,
+        0.05,
+        0.95,
+        0.41
+      ]
+    },
+    "doc_006": {
+      "recorte_relativo": [
+        0.05,
+        0.08,
+        0.95,
+        0.415
+      ]
+    },
+    "doc_007": {
+      "recorte_relativo": [
+        0.05,
+        0.08,
+        0.95,
+        0.4
+      ]
+    },
+    "doc_008": {
+      "recorte_relativo": [
+        0.305,
+        0.1,
+        0.95,
+        0.33
+      ]
+    },
+    "doc_009": {
+      "recorte_relativo": [
+        0.12,
+        0.19,
+        0.88,
+        0.465
+      ]
+    },
+    "doc_012": {
+      "recorte_relativo": [
+        0.1,
+        0.1,
+        0.9,
+        0.95
+      ]
+    },
+    "doc_013": {
+      "recorte_relativo": [
+        0.0,
+        0.03,
+        1.0,
+        0.325
+      ]
+    },
+    "doc_017": {
+      "recorte_relativo": [
+        0.0,
+        0.0,
+        1.0,
+        0.355
+      ]
+    },
+    "doc_019": {
+      "recorte_relativo": [
+        0.0,
+        0.0,
+        1.0,
+        0.75
+      ]
+    },
+    "doc_025": {
+      "recorte_relativo": [
+        0.0,
+        0.05,
+        1.0,
+        0.33
+      ]
+    }
+  },
+  "clips": {
+    "clip_003": {
+      "ventana_seg": null
+    },
+    "clip_011": {
+      "ventana_seg": null
+    },
+    "clip_014": {
+      "ventana_seg": null
+    },
+    "clip_015": {
+      "ventana_seg": null
+    },
+    "clip_016": {
+      "ventana_seg": null
+    },
+    "clip_018": {
+      "ventana_seg": null
+    },
+    "clip_019": {
+      "ventana_seg": null
+    },
+    "clip_020": {
+      "ventana_seg": null
+    },
+    "clip_022": {
+      "ventana_seg": [
+        0,
+        60
+      ]
+    },
+    "clip_023": {
+      "ventana_seg": [
+        0,
+        60
+      ]
+    }
+  }
+}

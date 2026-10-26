@@ -1,0 +1,15 @@
+# Tarea 2: archivos pesados o crudos que no se suben a GitHub (límite de 100 MB)
+datos/raw/
+datos/referencias/*.wav
+modelos/*.safetensors
+modelos/*.bin
+modelos/*.pt
+modelos/checkpoint-*/
+__pycache__/
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+# Referencias de las entrevistas (pueden tener nombres reales; la versión seudonimizada va en transcripciones.csv)
+datos/referencias/clip_*.txt
+datos/referencias/AUDITORIA_LEER.md
+datos/referencias/GUION_*
+datos/referencias/AUDITORIA_RESPUESTAS.txt

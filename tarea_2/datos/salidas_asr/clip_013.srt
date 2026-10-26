@@ -1,0 +1,63 @@
+1
+00:00:01,200 --> 00:00:04,900
+¿Quiere que adquiera algún tipo de boleto o reservación?
+
+2
+00:00:04,900 --> 00:00:09,120
+¿Tengo que pasar alguna prueba?
+
+3
+00:00:09,120 --> 00:00:14,770
+¿La pronunciación del francés es difícil?
+
+4
+00:00:14,770 --> 00:00:18,000
+¿Hay algún examen de admisión?
+
+5
+00:00:18,000 --> 00:00:26,290
+¿Lo que dicen en internet puede ser mentira o no?
+
+6
+00:00:26,290 --> 00:00:31,590
+Los requisitos para la escuela de cine es un examen en tres etapas y una audición.
+
+7
+00:00:31,590 --> 00:00:36,140
+¿Quién subió el mejor vídeo?
+
+8
+00:00:36,140 --> 00:00:40,650
+¡Uff, Carla! ¡Qué calor! ¡Me estoy llegando!
+
+9
+00:00:43,550 --> 00:00:51,260
+¿Qué me recomendaría una pesera de agua salada o de agua dulce?
+
+10
+00:00:51,260 --> 00:00:57,440
+Resérvame para cinco personas a las tres de la tarde.
+
+11
+00:00:57,440 --> 00:01:06,100
+¿Hay algún trabajo en particular que le haya dado como el salto a la fama por decirlo así?
+
+12
+00:01:06,100 --> 00:01:12,100
+El llano en llamas es un clásico de Juan Ruflo.
+
+13
+00:01:12,100 --> 00:01:18,380
+¿Puedes recomendarme música que sea de los noventas?
+
+14
+00:01:18,380 --> 00:01:25,940
+La temperatura mínima para mañana va a ser de trece grados centígrados.
+
+15
+00:01:26,040 --> 00:01:36,450
+Lo del parque me gustó porque hay árboles y aquí me puedo quedar bajo la sombra y me tomo un tefrío.
+
+16
+00:01:36,450 --> 00:01:39,750
+El jerolífico tiene un pez amarillo.
