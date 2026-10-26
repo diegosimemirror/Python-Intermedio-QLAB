@@ -34,6 +34,8 @@ SALIDAS_ASR = DATOS / "salidas_asr"
 FECHA_EXTRACCION = "25 de octubre de 2026"
 ORDEN_TIPOS = ["impreso", "foto", "manuscrito"]
 CORRECTO = ["1", "si", "sí", "true", "x"]
+NOMBRE_CORTO = {"PaddleOCR 3.7 PP-OCRv5 mobile (línea base)": "PaddleOCR", "EasyOCR 1.7 (es)": "EasyOCR",
+                "faster-whisper small (línea base)": "Whisper small", "Parakeet TDT 0.6B v3": "Parakeet v3"}
 
 GLOSARIO = """
 - **OCR:** reconocimiento óptico de caracteres; convierte una imagen en texto.
@@ -138,17 +140,24 @@ if len(evaluacion):
 # PROCESO 4: Indicadores clave.
 # Insumo: tablas filtradas, comparativa y métricas.
 # Resultado: fila de st.metric.
-c1, c2, c3, c4, c5 = st.columns(5)
+c1, c2, c3 = st.columns(3)
 c1.metric("Documentos procesados", f"{len(docs_f)} de {len(docs)}")
 c2.metric("Minutos de audio transcritos", coma(clips_f["duracion_seg"].sum() / 60, 1))
-comp_f = comparativa[comparativa["modelo"].isin(modelos_sel)] if len(comparativa) else comparativa
-for col, metrica, n in [(c3, "CER", "10 docs"), (c4, "WER", "10 clips")]:
-    sub = comp_f[comp_f["metrica"] == metrica].sort_values("valor") if len(comp_f) else comp_f
-    if len(sub):
-        col.metric(f"{metrica} del mejor modelo ({n})", coma(sub.iloc[0]["valor"], 3), help=sub.iloc[0]["modelo"])
 if metricas.get("acuerdo_llm_humano") is not None:
-    c5.metric("Concordancia LLM vs. auditoría humana", f"{metricas['acuerdo_llm_humano'] / 20:.0%}",
+    c3.metric("Concordancia LLM vs. auditoría humana", f"{metricas['acuerdo_llm_humano'] / 20:.0%}",
               help=f"{metricas['acuerdo_llm_humano']}/20 extracciones completamente correctas")
+
+# Una tarjeta por modelo evaluado (CER en 10 documentos, WER en 10 clips); ✓ = el de menor error, elegido.
+comp_f = comparativa[comparativa["modelo"].isin(modelos_sel)] if len(comparativa) else comparativa
+if len(comp_f):
+    comp_f = comp_f.sort_values(["metrica", "valor"])
+    menor = comp_f.groupby("metrica")["valor"].transform("min")
+    for col, (_, r), minimo in zip(st.columns(len(comp_f)), comp_f.iterrows(), menor):
+        nombre = NOMBRE_CORTO.get(r["modelo"], r["modelo"])
+        muestra = "10 docs" if r["metrica"] == "CER" else "10 clips"
+        col.metric(f"{r['metrica']} · {nombre}{' ✓' if r['valor'] == minimo else ''} ({muestra})", coma(r["valor"], 3),
+                   help=f"{r['modelo']} · latencia: {r['latencia']} · tamaño: {r['tamano']}")
+    st.caption("Error de cada modelo sobre las mismas muestras de evaluación (menor es mejor). ✓ = modelo elegido.")
 if clave:
     st.info(f"Búsqueda «{busqueda}»: {len(docs_f)} documentos y {len(clips_f)} clips contienen la palabra.")
 
