@@ -1,0 +1,49 @@
+indicador,grupo,anio,valor,unidad,fuente_original,citado_en,pagina
+pobreza,Nacional,2024,27.6,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,9
+pobreza,Nacional,2025,25.7,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,9
+pobreza,Nacional,2019,20.2,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,9
+pobreza,Urbano,2024,24.8,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+pobreza,Rural,2024,39.3,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+pobreza_extrema,Nacional,2024,5.5,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+pobreza_extrema,Rural,2024,15.5,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+pobreza_extrema,Lima Metropolitana,2024,3.3,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+brecha_pobreza_fgt1,Nacional,2024,7.21,% de la línea,Enaho (procesamiento de las autoras),Trivelli y Mendoza (2026) DT IEP 309 Tabla A1,66
+canasta_basica_alimentaria,Nacional,2019,187,soles por persona al mes,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+canasta_basica_alimentaria,Nacional,2025,260,soles por persona al mes,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,11
+no_pobre_vulnerable,Nacional,2025,32.8,% de personas,INEI (2026a),Trivelli y Mendoza (2026) DT IEP 309,15
+ipc_lima_indice,dic-2006,2006,62.56,índice dic. 2021 = 100,INEI (IPC Lima),Trivelli y Mendoza (2026) DT IEP 309 Anexo 2,67
+ipc_lima_indice,ago-2026,2026,120.72,índice dic. 2021 = 100,INEI (IPC Lima),Trivelli y Mendoza (2026) DT IEP 309 Anexo 2,67
+juntos_valor_real,S/ 100 de 2026 en soles de 2006,2026,51.82,soles,Cálculo de las autoras con IPC Lima,Trivelli y Mendoza (2026) DT IEP 309 Anexo 2,67
+juntos_hogares_usuarios,Nacional,2026,760,miles de hogares,InfoMidis (5-oct-2026),Trivelli y Mendoza (2026) DT IEP 309,42
+pobreza_sin_juntos_ni_pension65,Nacional,2025,29.6,% de personas,CIES (2026),Trivelli y Mendoza (2026) DT IEP 309,42
+inseguridad_alimentaria_mod_sev,Nacional,2025,30.5,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309,22
+inseguridad_alimentaria_mod_sev,Con menores de 5 años,2025,34.2,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Tabla 3,29
+inseguridad_alimentaria_mod_sev,Sin menores de 5 años,2025,29.3,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Tabla 3,29
+inseguridad_alimentaria_mod_sev,Jefatura femenina,2025,34.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Tabla 3,29
+inseguridad_alimentaria_mod_sev,Jefatura masculina,2025,28.1,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Tabla 3,29
+inseguridad_alimentaria_mod_sev,Amazonas,2025,29.7,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Áncash,2025,23.0,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Apurímac,2025,20.2,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Arequipa,2025,23.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Ayacucho,2025,35.2,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Cajamarca,2025,31.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Cusco,2025,32.4,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Huancavelica,2025,30.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Huánuco,2025,29.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Ica,2025,20.1,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Junín,2025,28.6,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,La Libertad,2025,25.7,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Lambayeque,2025,35.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Lima Metropolitana,2025,28.6,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Callao,2025,28.5,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,67
+inseguridad_alimentaria_mod_sev,Lima Provincias,2025,30.4,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Loreto,2025,46.9,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Madre de Dios,2025,33.5,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Moquegua,2025,13.7,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Pasco,2025,25.4,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Piura,2025,38.3,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Puno,2025,43.4,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,San Martín,2025,27.4,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Tacna,2025,28.5,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Tumbes,2025,28.6,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
+inseguridad_alimentaria_mod_sev,Ucayali,2025,36.7,% de personas,INEI (2026b) FIES,Trivelli y Mendoza (2026) DT IEP 309 Anexo 3,68
