@@ -7,3 +7,5 @@ mcp/datos/
 mcp/cache/
 # bases intermedias pesadas (se regeneran con limpiando-enaho)
 salidas/*.parquet
+# lista local de términos a ocultar en las evidencias (no se publica)
+scripts/ocultar_local.txt
