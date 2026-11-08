@@ -1,0 +1,68 @@
+indicador,grupo,valor,unidad,ponderador,nota
+pobreza,Nacional,27.5795,% de personas,factor07×mieperho,
+pobreza,Nacional (personas),27.5287,% de personas,facpob07,
+pobreza_extrema,Nacional,5.5045,% de personas,factor07×mieperho,
+pobreza,Urbano,24.807,% de personas,factor07×mieperho,
+pobreza_extrema,Urbano,3.1363,% de personas,factor07×mieperho,
+pobreza,Rural,39.3028,% de personas,factor07×mieperho,
+pobreza_extrema,Rural,15.5185,% de personas,factor07×mieperho,
+pobreza,Lima Metropolitana,28.2117,% de personas,factor07×mieperho,
+pobreza_extrema,Lima Metropolitana,3.2847,% de personas,factor07×mieperho,
+brecha_pobreza_fgt1,Nacional,7.2072,% de la línea,factor07×mieperho,
+pobres,Nacional,9.5101,millones de personas,factor07×mieperho,
+distribucion_pobres,Urbano,72.7439,% de los pobres,factor07×mieperho,
+distribucion_pobres,Rural,27.2561,% de los pobres,factor07×mieperho,
+distribucion_pobres,Lima Metropolitana,33.912,% de los pobres,factor07×mieperho,dominio 8: Lima Metropolitana y Callao
+condicion_vulnerabilidad,Pobre extremo,5.5045,% de personas,factor07×mieperho,variable pobrezav
+condicion_vulnerabilidad,Pobre no extremo,22.0749,% de personas,factor07×mieperho,variable pobrezav
+condicion_vulnerabilidad,No pobre vulnerable,31.7982,% de personas,factor07×mieperho,variable pobrezav
+condicion_vulnerabilidad,No pobre no vulnerable,40.6223,% de personas,factor07×mieperho,variable pobrezav
+pobreza,Sexo: Hombre,27.3706,% de personas,facpob07,
+pobreza,Sexo: Mujer,27.6757,% de personas,facpob07,
+pobreza,Hogar con menores de 5 años,43.805,% de personas,factor07×mieperho,
+pobreza_extrema,Hogar con menores de 5 años,10.2905,% de personas,factor07×mieperho,
+pobreza,Hogar sin menores de 5 años,22.0322,% de personas,factor07×mieperho,
+pobreza_extrema,Hogar sin menores de 5 años,3.8683,% de personas,factor07×mieperho,
+pobreza,Hogar con adultos de 65+,26.8192,% de personas,factor07×mieperho,
+pobreza_extrema,Hogar con adultos de 65+,5.2968,% de personas,factor07×mieperho,
+pobreza,Hogar sin adultos de 65+,27.8543,% de personas,factor07×mieperho,
+pobreza_extrema,Hogar sin adultos de 65+,5.5796,% de personas,factor07×mieperho,
+pobreza,Jefatura femenina (urbano),24.7952,% de personas,factor07×mieperho,
+pobreza,Jefatura femenina (rural),35.1905,% de personas,factor07×mieperho,
+pobreza,Jefatura femenina,26.1055,% de personas,factor07×mieperho,
+pobreza,Jefatura masculina (urbano),24.7628,% de personas,factor07×mieperho,
+pobreza,Jefatura masculina (rural),40.5693,% de personas,factor07×mieperho,
+pobreza,Jefatura masculina,28.3158,% de personas,factor07×mieperho,
+share_gasto_alimentos,Pobres,44.6321,% del gasto del hogar,factor07×mieperho,"grupo 1 (gru1*) / gashog2d, promedio ponderado"
+share_gasto_alimentos,No pobres,33.1741,% del gasto del hogar,factor07×mieperho,"grupo 1 (gru1*) / gashog2d, promedio ponderado"
+hogares_receptores,Juntos,1040.7769,miles de hogares,factor07,ingtpu01
+monto_anual_mediano,Juntos,1202.0,soles al año,sin ponderar,mediana entre hogares receptores
+hogares_receptores,Pensión 65,902.531,miles de hogares,factor07,ingtpu03
+monto_anual_mediano,Pensión 65,1506.0,soles al año,sin ponderar,mediana entre hogares receptores
+linea_pobreza_extrema,Nacional,255.5703,soles por persona al mes,factor07×mieperho,promedio ponderado de linpe
+linea_pobreza,Nacional,454.3859,soles por persona al mes,factor07×mieperho,
+pobreza_departamento,01,25.7488,% de personas,factor07×mieperho,
+pobreza_departamento,02,22.7746,% de personas,factor07×mieperho,
+pobreza_departamento,03,23.9587,% de personas,factor07×mieperho,
+pobreza_departamento,04,15.7844,% de personas,factor07×mieperho,
+pobreza_departamento,05,32.7633,% de personas,factor07×mieperho,
+pobreza_departamento,06,45.0069,% de personas,factor07×mieperho,
+pobreza_departamento,07,33.8599,% de personas,factor07×mieperho,
+pobreza_departamento,08,18.5413,% de personas,factor07×mieperho,
+pobreza_departamento,09,33.4034,% de personas,factor07×mieperho,
+pobreza_departamento,10,38.9626,% de personas,factor07×mieperho,
+pobreza_departamento,11,6.0142,% de personas,factor07×mieperho,
+pobreza_departamento,12,18.4994,% de personas,factor07×mieperho,
+pobreza_departamento,13,30.1903,% de personas,factor07×mieperho,
+pobreza_departamento,14,14.0406,% de personas,factor07×mieperho,
+pobreza_departamento,15,27.0689,% de personas,factor07×mieperho,
+pobreza_departamento,16,42.9726,% de personas,factor07×mieperho,
+pobreza_departamento,17,11.1478,% de personas,factor07×mieperho,
+pobreza_departamento,18,10.9682,% de personas,factor07×mieperho,
+pobreza_departamento,19,38.972,% de personas,factor07×mieperho,
+pobreza_departamento,20,31.861,% de personas,factor07×mieperho,
+pobreza_departamento,21,39.9381,% de personas,factor07×mieperho,
+pobreza_departamento,22,22.0215,% de personas,factor07×mieperho,
+pobreza_departamento,23,23.989,% de personas,factor07×mieperho,
+pobreza_departamento,24,26.9012,% de personas,factor07×mieperho,
+pobreza_departamento,25,27.0701,% de personas,factor07×mieperho,

@@ -262,32 +262,38 @@ def graficar_serie(codigos: list[str], desde: str, hasta: str, titulo: str, arch
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
+    if not 1 <= len(codigos) <= 4:
+        raise ToolError("graficar_serie acepta de 1 a 4 series; para más, hagan varios gráficos.")
+    colores = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]   # paleta categórica validada, en orden fijo
     FIGURAS.mkdir(exist_ok=True)
-    fig, ax = plt.subplots(figsize=(9, 5))
+    fig, ax = plt.subplots(figsize=(9, 5), facecolor="#fcfcfb")
+    ax.set_facecolor("#fcfcfb")
     ultimos, fuentes = {}, []
-    for cod in codigos:
+    for cod, color in zip(codigos, colores):
         ficha, datos, url = _datos(cod, desde, hasta)
         s = pd.Series([x["valor"] for x in datos], index=[x["periodo"] for x in datos])
         if base_100:
             s = s / s.iloc[0] * 100
         etiqueta = f"{ficha['nombre'].split(' - ')[-1]} ({cod})"
-        ax.plot(range(len(s)), s.values, lw=2, label=etiqueta)
+        ax.plot(range(len(s)), s.values, lw=2, color=color, label=etiqueta)
         paso = max(1, len(s) // 8)
         ax.set_xticks(range(0, len(s), paso), s.index[::paso], rotation=45, ha="right", fontsize=8)
-        ax.annotate(f"{s.iloc[-1]:.1f}", (len(s) - 1, s.iloc[-1]), fontsize=8, xytext=(4, 0),
-                    textcoords="offset points", va="center")
+        ax.annotate(f"{s.iloc[-1]:.1f}".replace(".", ","), (len(s) - 1, s.iloc[-1]), fontsize=8, xytext=(4, 0),
+                    textcoords="offset points", va="center", color="#0b0b0b")
         ultimos[cod] = {"periodo": s.index[-1], "valor": round(float(s.iloc[-1]), 4)}
         fuentes.append(url)
-    ax.set_title(titulo, fontsize=11, loc="left")
+    ax.set_title(titulo, fontsize=11, loc="left", fontweight="bold", color="#0b0b0b")
     ax.set_ylabel(f"Índice ({desde} = 100)" if base_100 else ficha["nombre"].split("(")[-1].rstrip(")"))
-    ax.grid(alpha=0.3)
-    ax.spines[["top", "right"]].set_visible(False)
+    ax.grid(color="#e1e0d9", lw=0.6)
+    ax.tick_params(colors="#898781", labelsize=8)
+    ax.spines[["top", "right", "left"]].set_visible(False)
+    ax.spines["bottom"].set_color("#c3c2b7")
     ax.legend(fontsize=8, frameon=False)
     fig.text(0.01, 0.01, f"Fuente: BCRP, series {', '.join(codigos)} ({desde} a {hasta}). {nota}".strip(),
-             fontsize=7, color="#555")
+             fontsize=7, color="#52514e")
     fig.tight_layout(rect=(0, 0.03, 1, 1))
     ruta = FIGURAS / Path(archivo).name
-    fig.savefig(ruta, dpi=200)
+    fig.savefig(ruta, dpi=200, facecolor="#fcfcfb")
     plt.close(fig)
     return {"archivo": str(ruta.relative_to(AQUI.parent)).replace("\\", "/"), "codigos": codigos,
             "base_100": base_100, "ultimos": ultimos, "fuente": fuentes}
