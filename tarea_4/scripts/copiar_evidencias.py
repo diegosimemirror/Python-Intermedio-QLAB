@@ -35,6 +35,7 @@ if __name__ == "__main__":
         for nombre, patron, reemplazo in REGLAS:
             texto, n = patron.subn(reemplazo, texto)
             cuenta[nombre] = cuenta.get(nombre, 0) + n
-        destino = DESTINO / f"conversacion_{origen.stem}.md"
+        nombre = "desarrollo" if len(sys.argv) == 2 else origen.stem   # una sola conversación → nombre fijo
+        destino = DESTINO / f"conversacion_{nombre}.md"
         destino.write_text(texto, encoding="utf-8")
         print(destino.relative_to(Path.cwd()), cuenta)
