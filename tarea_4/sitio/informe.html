@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe final · Tarea 4</title>
+<meta name="description" content="Informe completo del agente de investigación socioeconómica: precios del BCRP, poder de compra de Juntos y pobreza monetaria con la ENAHO 2024.">
+<link rel="stylesheet" href="estilo.css">
+<script>try { var t = localStorage.getItem("tema"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="index.html">Tarea 4 <span>· Agente socioeconómico</span></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="index.html">Resumen</a>
+      <a href="informe.html" aria-current="page">Informe completo</a>
+      <a class="opcional" href="https://github.com/diegosimemirror/Python-Intermedio-QLAB/tree/main/tarea_4">Código</a>
+    </nav>
+    <button class="tema" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">◐</button>
+  </div>
+</header>
+<main class="envoltura informe">
+  <aside class="indice" aria-label="Índice del informe">
+    <p><a href="index.html">← Volver al resumen</a></p>
+    <div class="toc">
+<ul>
+<li><a href="#1-pregunta-de-investigacion">1. Pregunta de investigación</a></li>
+<li><a href="#2-fuentes-y-metodologia">2. Fuentes y metodología</a><ul>
+<li><a href="#21-datos">2.1 Datos</a></li>
+<li><a href="#22-series-del-bcrp-ubicadas-con-buscar_series">2.2 Series del BCRP (ubicadas con buscar_series)</a></li>
+<li><a href="#23-procesamiento-de-la-enaho-skill-limpiando-enaho">2.3 Procesamiento de la ENAHO (Skill limpiando-enaho)</a></li>
+<li><a href="#24-indicadores-y-calculos">2.4 Indicadores y cálculos</a></li>
+</ul>
+</li>
+<li><a href="#3-resultados">3. Resultados</a><ul>
+<li><a href="#hallazgo-1-los-s-100-de-juntos-valen-hoy-la-mitad-que-en-2006-y-menos-de-la-mitad-si-se-miden-en-alimentos">Hallazgo 1. Los S/ 100 de Juntos valen hoy la mitad que en 2006, y menos de la mitad si se miden en alimentos</a></li>
+<li><a href="#hallazgo-2-los-alimentos-subieron-mucho-mas-que-el-resto-de-precios-y-pesan-mas-en-el-gasto-de-los-pobres">Hallazgo 2. Los alimentos subieron mucho más que el resto de precios, y pesan más en el gasto de los pobres</a></li>
+<li><a href="#hallazgo-3-la-pobreza-es-mas-alta-en-el-campo-en-los-hogares-con-ninos-pequenos-y-en-el-norte-y-la-amazonia-pero-la-mayoria-de-los-pobres-es-urbana">Hallazgo 3. La pobreza es más alta en el campo, en los hogares con niños pequeños y en el norte y la Amazonía; pero la mayoría de los pobres es urbana</a></li>
+<li><a href="#hallazgo-4-complementario-juntos-llega-a-la-mitad-de-los-pobres-rurales-pero-a-solo-15-de-los-pobres-urbanos">Hallazgo 4 (complementario). Juntos llega a la mitad de los pobres rurales, pero a solo 15 % de los pobres urbanos</a></li>
+</ul>
+</li>
+<li><a href="#4-visualizaciones">4. Visualizaciones</a></li>
+<li><a href="#5-interpretacion">5. Interpretación</a></li>
+<li><a href="#6-limitaciones">6. Limitaciones</a></li>
+<li><a href="#7-reproducibilidad">7. Reproducibilidad</a></li>
+<li><a href="#8-contraste-con-cifras-publicadas">8. Contraste con cifras publicadas</a></li>
+<li><a href="#9-verificacion-manual-de-cifras">9. Verificación manual de cifras</a><ul>
+<li><a href="#herramientas-usadas">Herramientas usadas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </aside>
+  <article class="articulo">
+    <h1 id="a-quien-protege-hoy-la-politica-social-en-el-peru">¿A quién protege hoy la política social en el Perú?</h1>
+<p><strong>Precios, poder de compra de Juntos y pobreza monetaria: BCRP 2006-2026 y ENAHO 2024</strong></p>
+<p>Informe generado por el agente de investigación socioeconómica de <code>tarea_4</code> (servidor MCP <code>bcrp</code> y Skills
+<code>limpiando-enaho</code>, <code>graficando-enaho</code> y <code>mapeando-enaho</code>), 8 de noviembre de 2026. Todas las cifras salen de una
+herramienta; las del DT 309 solo se usan para contrastar (sección 8).</p>
+<hr />
+<h2 id="1-pregunta-de-investigacion">1. Pregunta de investigación</h2>
+<p><strong>Tema.</strong> La protección que ofrece la política social peruana, con el programa Juntos como caso: cuánto vale hoy su
+transferencia, cómo han subido los precios que más pesan en el presupuesto de los hogares pobres y dónde están esos
+hogares.</p>
+<p><strong>Objetivo.</strong> Responder a tres preguntas con datos oficiales y de forma reproducible:</p>
+<ol>
+<li>¿Cuánto poder de compra perdieron los S/ 100 mensuales de Juntos entre diciembre de 2006 y 2026?</li>
+<li>¿Cuánto subieron los alimentos frente al resto de precios y cuánto pesa eso en el costo de vida de un hogar pobre?</li>
+<li>¿En qué territorios y en qué tipos de hogar se concentra la pobreza monetaria en 2024, y a cuántos de esos hogares
+      llega Juntos?</li>
+</ol>
+<p><strong>Delimitación.</strong></p>
+<ul>
+<li><strong>Precios:</strong> IPC de Lima Metropolitana (BCRP), de diciembre de 2006 a octubre de 2026, el último mes disponible al
+    consultar.</li>
+<li><strong>Pobreza:</strong> ENAHO 2024 del INEI (módulo 34 «sumaria» y módulo 02 «miembros del hogar»), nacional, por área, por
+    departamento (25) y por tipo de hogar.</li>
+<li><strong>Marco:</strong> Trivelli y Mendoza (2026), «Repensar y rearmar la política social para retomar la senda perdida», IEP,
+    Documento de Trabajo 309.</li>
+</ul>
+<h2 id="2-fuentes-y-metodologia">2. Fuentes y metodología</h2>
+<h3 id="21-datos">2.1 Datos</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Contenido</th>
+<th>Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BCRP, series estadísticas</td>
+<td>IPC y variaciones de Lima Metropolitana</td>
+<td>servidor MCP <code>bcrp</code> (API <code>estadisticas.bcrp.gob.pe</code>)</td>
+</tr>
+<tr>
+<td>INEI, ENAHO 2024, módulo 34</td>
+<td>sumaria: gasto, líneas, pobreza, transferencias (33 691 hogares)</td>
+<td><code>datos/966-Modulo34.zip</code></td>
+</tr>
+<tr>
+<td>INEI, ENAHO 2024, módulo 02</td>
+<td>miembros del hogar: edad, sexo, parentesco, residencia (117 721 filas)</td>
+<td><code>datos/966-Modulo02.zip</code></td>
+</tr>
+<tr>
+<td>Repositorio del curso</td>
+<td>límites departamentales (GeoJSON) y referencia departamental de la sesión 16</td>
+<td><code>datos/</code>, <code>referencias/</code></td>
+</tr>
+<tr>
+<td>Trivelli y Mendoza (2026)</td>
+<td>cifras publicadas, con fuente original y página</td>
+<td><code>referencias/contraste_dt309.csv</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="22-series-del-bcrp-ubicadas-con-buscar_series">2.2 Series del BCRP (ubicadas con <code>buscar_series</code>)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Serie (Lima Metropolitana)</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PN38705PM</code></td>
+<td>IPC, índice dic. 2021 = 100</td>
+<td>poder de compra de Juntos (<code>valor_real</code>), gráfico</td>
+</tr>
+<tr>
+<td><code>PN39445PM</code></td>
+<td>IPC Alimentos y Bebidas, índice dic. 2021 = 100</td>
+<td>alza de alimentos, gráfico, Juntos en precios de alimentos</td>
+</tr>
+<tr>
+<td><code>PN38706PM</code></td>
+<td>IPC sin Alimentos y Bebidas, índice dic. 2021 = 100</td>
+<td>«resto de precios»</td>
+</tr>
+<tr>
+<td><code>PN01273PM</code></td>
+<td>IPC, variación % 12 meses</td>
+<td>inflación total</td>
+</tr>
+<tr>
+<td><code>PN09822PM</code></td>
+<td>IPC Alimentos y Bebidas, variación % 12 meses</td>
+<td>inflación de alimentos (cruce)</td>
+</tr>
+<tr>
+<td><code>PN09823PM</code></td>
+<td>IPC sin Alimentos y Bebidas, variación % 12 meses</td>
+<td>inflación del resto (cruce complementario)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="23-procesamiento-de-la-enaho-skill-limpiando-enaho">2.3 Procesamiento de la ENAHO (Skill <code>limpiando-enaho</code>)</h3>
+<ul>
+<li>Llaves de hogar y persona como texto; nombres de variables en minúscula.</li>
+<li>Residentes habituales: <code>((p204 == 1) &amp; (p205 == 2)) | ((p204 == 2) &amp; (p206 == 1))</code> (108 664 personas).</li>
+<li>Unión personas–hogares <code>merge(validate="m:1")</code>: 108 664 personas antes y después, ninguna sin hogar.</li>
+<li>Pobre si <code>pobreza &lt;= 2</code> y pobre extremo si <code>pobreza == 1</code>. Urbano si <code>estrato &lt;= 5</code>. Departamento = <code>ubigeo[:2]</code>,
+    con Lima (15) y Callao (07) separados. Lima Metropolitana = <code>dominio == 8</code>, que incluye el Callao.</li>
+<li>Participación de los alimentos = suma de <code>gru1*</code> / <code>gashog2d</code>. Juntos = <code>ingtpu01</code> (soles al año).</li>
+<li><strong>Ponderación:</strong> los indicadores de hogar usan <code>factor07 × mieperho</code>, que da la tasa en personas (método del INEI).
+    Los de persona (sexo) usan <code>facpob07</code>. Los conteos de hogares usan <code>factor07</code>. No hay promedios simples, salvo la
+    mediana del monto de Juntos, que se calcula sin ponderar; la mediana ponderada con <code>factor07</code> da el mismo valor.</li>
+<li><strong>Validación</strong> (<code>salidas/validacion.txt</code>): <strong>VÁLIDA</strong>, con 15 de 16 pruebas aprobadas. Hay un aviso no
+    esencial: 19 hogares (0,06 %) gastan en alimentos más que su gasto total, y se dejan como están. La pobreza
+    nacional sale 27,58 %, la urbana 24,81 % y la rural 39,30 %. Por departamento, la diferencia máxima con la
+    referencia de la sesión 16 es 0,05 pp.</li>
+</ul>
+<h3 id="24-indicadores-y-calculos">2.4 Indicadores y cálculos</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Cálculo</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valor real de Juntos</td>
+<td><code>monto × IPC[dic-2006] / IPC[mes]</code></td>
+<td>MCP <code>valor_real</code></td>
+</tr>
+<tr>
+<td>Variación acumulada y precio relativo de alimentos</td>
+<td>cociente de índices 2006-12 → 2026-10</td>
+<td>MCP <code>resumen</code> + <code>scripts/cruce_y_contraste.py</code></td>
+</tr>
+<tr>
+<td>Pobreza, pobreza extrema, brecha FGT1, distribución de los pobres, gasto en alimentos, Juntos</td>
+<td>ponderados según 2.3</td>
+<td>Skill <code>limpiando-enaho</code> → <code>salidas/indicadores.csv</code></td>
+</tr>
+<tr>
+<td>Aporte de los alimentos al alza del costo de vida</td>
+<td>participación de los alimentos en el gasto × <code>PN09822PM</code> de 2026-10</td>
+<td><code>scripts/cruce_y_contraste.py</code></td>
+</tr>
+<tr>
+<td>Cobertura de Juntos</td>
+<td>% de personas (<code>peso_personas</code>) en hogares con <code>ingtpu01 &gt; 0</code></td>
+<td><code>scripts/cruce_y_contraste.py</code> sobre <code>salidas/hogares_2024.parquet</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-resultados">3. Resultados</h2>
+<h3 id="hallazgo-1-los-s-100-de-juntos-valen-hoy-la-mitad-que-en-2006-y-menos-de-la-mitad-si-se-miden-en-alimentos">Hallazgo 1. Los S/ 100 de Juntos valen hoy la mitad que en 2006, y menos de la mitad si se miden en alimentos</h3>
+<ul>
+<li>El IPC de Lima subió <strong>94,3 %</strong> entre diciembre de 2006 y octubre de 2026: de 62,56 a 121,55
+    (<code>PN38705PM</code>, <code>resumen</code> 2006-12 a 2026-10). El valor más alto de la serie es el último dato.</li>
+<li><strong>S/ 100 de agosto de 2026 equivalen a S/ 51,82 de diciembre de 2006</strong>, y S/ 100 de octubre de 2026 equivalen a
+    <strong>S/ 51,47</strong> (<code>valor_real</code>, <code>PN38705PM</code>). Con un monto nominal fijo de S/ 100, la transferencia perdió
+    <strong>48,2 %</strong> de su poder de compra hasta agosto de 2026 y <strong>48,5 %</strong> hasta octubre de 2026
+    (<code>salidas/cruce.csv</code>).</li>
+<li>Medidos en precios de alimentos, los S/ 100 de octubre de 2026 equivalen a <strong>S/ 43,53</strong> de diciembre de 2006, una
+    pérdida de <strong>56,5 %</strong> (<code>valor_real</code> con <code>PN39445PM</code>).</li>
+<li>La ENAHO 2024 confirma que el monto nominal sigue cerca de S/ 100. La mediana anual de Juntos entre los hogares
+    receptores es <strong>S/ 1 202</strong>, es decir <strong>S/ 100,17 al mes</strong>, y el 90 % central de los montos declarados va de
+    S/ 1 192 a S/ 1 218 al año (ENAHO 2024, <code>monto_anual_mediano</code>/Juntos; percentiles en <code>salidas/cruce.csv</code>).
+    En soles de diciembre de 2006, esa mediana <strong>equivale a S/ 54,88</strong>, con el IPC de diciembre de 2024
+    (<code>valor_real</code>, <code>PN38705PM</code>, 2024-12 → 2006-12; inflación acumulada de 82,5 %).</li>
+</ul>
+<h3 id="hallazgo-2-los-alimentos-subieron-mucho-mas-que-el-resto-de-precios-y-pesan-mas-en-el-gasto-de-los-pobres">Hallazgo 2. Los alimentos subieron mucho más que el resto de precios, y pesan más en el gasto de los pobres</h3>
+<ul>
+<li>Entre 2006-12 y 2026-10, el IPC de Alimentos y Bebidas subió <strong>129,7 %</strong>, de 55,74 a 128,04 (<code>PN39445PM</code>,
+    <code>resumen</code>). El IPC sin alimentos subió <strong>71,4 %</strong>, de 68,39 a 117,23 (<code>PN38706PM</code>, <code>resumen</code>). Por eso los
+    alimentos se encarecieron <strong>34,0 %</strong> frente al resto de precios (<code>salidas/cruce.csv</code>).</li>
+<li>Inflación a 12 meses:<ul>
+<li>IPC total (<code>PN01273PM</code>, 2007-01 a 2026-10): promedio de 3,30 %, máximo de 8,81 % (2022-06) y último dato de
+    <strong>5,25 %</strong> (2026-10).</li>
+<li>Alimentos (<code>PN09822PM</code>, mismo periodo): promedio de 4,19 %, máximo de 13,16 % (2023-02), mínimo de −2,57 %
+    (2018-03) y último dato de <strong>5,28 %</strong> (2026-10).</li>
+<li>Entre 2024-01 y 2026-10, ambas series llegan a su máximo en octubre de 2026. El IPC total tuvo su mínimo en
+    1,11 % (2025-08) y el de alimentos en 0,59 % (2025-03).</li>
+<li>En diciembre de 2024, el mes del IPC usado en el cruce, la inflación a 12 meses fue de 1,97 % la total y de
+    1,25 % la de alimentos.</li>
+</ul>
+</li>
+<li>Los hogares pobres destinan <strong>44,6 %</strong> de su gasto a alimentos y los no pobres, <strong>33,2 %</strong> (ENAHO 2024,
+    <code>share_gasto_alimentos</code>, promedio ponderado).</li>
+<li><strong>Cruce:</strong> participación de alimentos de los pobres (44,63 %) × inflación de alimentos a 12 meses de octubre de
+    2026 (5,28 %, <code>PN09822PM</code>) = <strong>2,36 puntos porcentuales</strong>. Eso es lo que los alimentos aportan al alza anual del
+    costo de vida de un hogar pobre. En un hogar no pobre aportan 1,75 pp.</li>
+<li>Si se suma el resto de la canasta con la inflación sin alimentos (5,23 %, <code>PN09823PM</code>, 2026-10), el alza
+    implícita es de 5,25 % para pobres y no pobres. Para los pobres, los alimentos explican <strong>44,9 %</strong> de esa alza;
+    para los no pobres, 33,4 %. En el último año los dos grupos de precios subieron casi igual, así que el peso de los
+    alimentos casi no cambia el total.</li>
+<li>La diferencia aparece en el largo plazo. Con la canasta de 2024 fija, el alza acumulada 2006-2026 es de
+    <strong>97,4 %</strong> para un hogar pobre y de <strong>90,7 %</strong> para uno no pobre. Para los pobres, los alimentos explican 59,4 % de
+    esa alza (<code>salidas/cruce.csv</code>; es una aproximación, ver Limitaciones).</li>
+</ul>
+<h3 id="hallazgo-3-la-pobreza-es-mas-alta-en-el-campo-en-los-hogares-con-ninos-pequenos-y-en-el-norte-y-la-amazonia-pero-la-mayoria-de-los-pobres-es-urbana">Hallazgo 3. La pobreza es más alta en el campo, en los hogares con niños pequeños y en el norte y la Amazonía; pero la mayoría de los pobres es urbana</h3>
+<ul>
+<li><strong>Nivel.</strong> En 2024, <strong>27,58 %</strong> de las personas son pobres, unos <strong>9,51 millones</strong>, y <strong>5,50 %</strong> son pobres
+    extremas. Además, <strong>31,80 %</strong> son no pobres pero vulnerables (ENAHO 2024: <code>pobreza</code>/Nacional, <code>pobres</code>,
+    <code>pobreza_extrema</code>, <code>condicion_vulnerabilidad</code>).</li>
+<li><strong>Área.</strong> La pobreza es de <strong>39,30 %</strong> en el área rural y de <strong>24,81 %</strong> en la urbana. La pobreza extrema también
+    es mucho mayor en el campo: 15,52 % frente a 3,14 %. Aun así, <strong>72,7 % de los pobres vive en zonas urbanas</strong> y <strong>33,9 % en Lima
+    Metropolitana</strong> (con el Callao), donde la pobreza es de 28,21 %, algo más que el promedio nacional (ENAHO 2024,
+    <code>pobreza</code> y <code>distribucion_pobres</code>).</li>
+<li><strong>Tipo de hogar.</strong><ul>
+<li>En los hogares con <strong>menores de 5 años</strong>, la pobreza es de <strong>43,80 %</strong>, frente a 22,03 % en los hogares sin
+    ellos. La pobreza extrema es de 10,29 %, frente a 3,87 %. El 40,5 % de los pobres vive en estos hogares.</li>
+<li>Con adultos de 65 o más años la diferencia es pequeña: 26,82 % frente a 27,85 %.</li>
+<li>Por jefatura, la pobreza es de 26,11 % con jefa mujer y de 28,32 % con jefe hombre. En el área rural es de
+    35,19 % y 40,57 %, respectivamente.</li>
+<li>Por sexo de la persona, la pobreza es de 27,68 % en mujeres y 27,37 % en hombres (con <code>facpob07</code>).</li>
+</ul>
+</li>
+<li><strong>Territorio.</strong><ul>
+<li>Más pobreza: <strong>Cajamarca (45,01 %)</strong>, <strong>Loreto (42,97 %)</strong>, Puno (39,94 %), Pasco (38,97 %) y Huánuco (38,96 %).</li>
+<li>Menos pobreza: Ica (6,01 %), Moquegua (10,97 %), Madre de Dios (11,15 %), Lambayeque (14,04 %) y Arequipa
+    (15,78 %).</li>
+<li>El Callao llega a 33,86 % y el departamento de Lima, que incluye Lima Provincias, a 27,07 % (ENAHO 2024,
+    <code>pobreza_departamento</code>).</li>
+</ul>
+</li>
+<li><strong>Brecha de pobreza.</strong> La brecha (FGT1) es de <strong>7,21 %</strong> de la línea. La línea de pobreza promedio es de
+    S/ 454,39 por persona al mes y la de pobreza extrema, de S/ 255,57.</li>
+</ul>
+<h3 id="hallazgo-4-complementario-juntos-llega-a-la-mitad-de-los-pobres-rurales-pero-a-solo-15-de-los-pobres-urbanos">Hallazgo 4 (complementario). Juntos llega a la mitad de los pobres rurales, pero a solo 15 % de los pobres urbanos</h3>
+<p>Estimación propia con <code>salidas/hogares_2024.parquet</code>, ponderada con <code>factor07 × mieperho</code>.</p>
+<ul>
+<li>La ENAHO estima <strong>1 040,8 mil hogares</strong> con Juntos (<code>hogares_receptores</code>, <code>factor07</code>).</li>
+<li><strong>24,3 % de las personas pobres</strong> vive en un hogar que recibe Juntos.</li>
+<li>Por grupo:</li>
+</ul>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Grupo</th>
+<th>% que vive en un hogar con Juntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pobres extremos</td>
+<td>38,1 %</td>
+</tr>
+<tr>
+<td>Pobres con menores de 5 años</td>
+<td>31,9 %</td>
+</tr>
+<tr>
+<td>Pobres rurales</td>
+<td>48,7 %</td>
+</tr>
+<tr>
+<td>Pobres urbanos</td>
+<td>15,1 %</td>
+</tr>
+<tr>
+<td>No pobres</td>
+<td>9,5 %</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>De las personas en hogares con Juntos, <strong>49,2 % son pobres</strong> según la línea monetaria de 2024.</li>
+</ul>
+<h2 id="4-visualizaciones">4. Visualizaciones</h2>
+<p><img alt="IPC total y de alimentos, base dic. 2006 = 100" src="figuras/bcrp_ipc_alimentos.png" /></p>
+<p><strong>Figura 1.</strong> Desde diciembre de 2006, los alimentos (229,7) se separan del IPC total (194,3), sobre todo desde
+2021. La transferencia nominal de Juntos no siguió a ninguna de las dos curvas. Fuente: BCRP, <code>PN38705PM</code> y
+<code>PN39445PM</code>, 2006-12 a 2026-10 (<code>graficar_serie</code>, base 100).</p>
+<p><img alt="Pobreza por tipo de hogar" src="figuras/enaho_pobreza_hogares.png" /></p>
+<p><strong>Figura 2.</strong> Tener niños menores de 5 años es el rasgo del hogar más asociado a la pobreza: 43,8 % frente a 22,0 %.
+La presencia de adultos mayores o el sexo de quien encabeza el hogar marcan poca diferencia. Fuente: INEI, ENAHO
+2024 (Skill <code>graficando-enaho</code>, <code>hogares</code>).</p>
+<p><img alt="Pobreza por área" src="figuras/enaho_pobreza_area.png" /></p>
+<p><strong>Figura 3.</strong> La pobreza rural (39,3 %) supera a la urbana (24,8 %), y Lima Metropolitana (28,2 %) está por encima
+del promedio nacional (27,6 %). Fuente: INEI, ENAHO 2024 (Skill <code>graficando-enaho</code>, <code>area</code>).</p>
+<p><img alt="Mapa de pobreza por departamento" src="mapas/pobreza_departamento_2024.png" /></p>
+<p><strong>Figura 4.</strong> La pobreza se concentra en la sierra norte (Cajamarca, 45,0 %), la Amazonía (Loreto, 43,0 %) y el
+altiplano (Puno, 39,9 %). La costa sur (Ica, Moquegua, Arequipa) tiene las tasas más bajas. Fuente: INEI, ENAHO 2024
+(Skill <code>mapeando-enaho</code>; 25 departamentos unidos por código de ubigeo).</p>
+<h2 id="5-interpretacion">5. Interpretación</h2>
+<p>Los resultados describen asociaciones, no causas.</p>
+<ol>
+<li><strong>La protección se ha encogido en términos reales.</strong> El monto nominal de Juntos se mantiene en torno a S/ 100 al
+      mes: lo dice la ENAHO 2024 y es el supuesto del enunciado y del DT 309. Mientras tanto, el IPC subió 94,3 % y los
+      alimentos 129,7 %. Para un hogar pobre, con su canasta de 2024 fija (45 % en comida), los S/ 100 de octubre de
+      2026 valen <strong>S/ 50,65 de 2006</strong> (<code>salidas/cruce.csv</code>). Es un poco menos que con el IPC general (S/ 51,47) y está
+      lejos de la medida solo con alimentos (S/ 43,53), porque el 55 % restante de su gasto subió menos. <em>(Corregido en
+      la verificación, sección 9: la primera versión decía que se parecía más a la medida con alimentos.)</em></li>
+<li><strong>Los pobres están más expuestos a los alimentos.</strong> Por cada punto de inflación de alimentos, el costo de vida de
+      un hogar pobre sube unos 0,45 puntos, y el de uno no pobre, unos 0,33. En el último año eso apenas importó,
+      porque los alimentos y el resto subieron casi lo mismo (5,28 % y 5,23 %). En los veinte años acumulados sí
+      importa: con canasta fija, el alza es de 97,4 % para los pobres y de 90,7 % para los no pobres.</li>
+<li><strong>Dónde está la pobreza depende de cómo se mire.</strong> Por tasa, el problema es rural, amazónico y andino. Por
+      número de personas, es urbano: siete de cada diez pobres viven en ciudades y uno de cada tres en Lima
+      Metropolitana.</li>
+<li><strong>¿A quién protege Juntos?</strong> Su presencia está asociada a lo rural y a la pobreza extrema: llega a casi la mitad
+      de los pobres rurales y a 38 % de los pobres extremos. En cambio, llega a solo 15 % de los pobres urbanos, que
+      son la mayoría de los pobres. También llega a menos de un tercio de los pobres con niños pequeños, el tipo de
+      hogar con más pobreza.</li>
+<li><strong>Focalización.</strong> Que la mitad de las personas en hogares con Juntos no sea pobre en 2024 no prueba que el
+      programa esté mal focalizado. La focalización del programa no usa la línea monetaria de la ENAHO de ese año, y
+      el propio ingreso de Juntos puede sacar a algunos hogares de la línea. Pero sí muestra que la medición monetaria
+      anual y el padrón no coinciden.</li>
+</ol>
+<h2 id="6-limitaciones">6. Limitaciones</h2>
+<ul>
+<li><strong>Cobertura temporal.</strong> La pobreza es de 2024 y los precios llegan a octubre de 2026. El cruce mezcla la canasta
+    de gasto de 2024 con la inflación de 2026: supone que la participación de los alimentos no cambió. La cobertura de
+    Juntos y la pobreza pueden haber cambiado desde 2024. El DT 309 cita otra cifra de pobreza para 2025, que aquí no
+    se puede verificar.</li>
+<li><strong>Niveles de agregación distintos.</strong><ul>
+<li>El IPC es de Lima Metropolitana y se aplica a hogares de todo el país, incluidos los rurales, cuyos precios
+    pueden moverse distinto. Las líneas de pobreza de la ENAHO, en cambio, varían por dominio.</li>
+<li>El rubro «Alimentos y Bebidas» del IPC y el grupo 1 de gasto de la ENAHO (<code>gru1*</code>) no tienen necesariamente la
+    misma cobertura.</li>
+<li>«Lima Metropolitana» (<code>dominio == 8</code>, con el Callao) no es lo mismo que el departamento de Lima (ubigeo 15, con
+    Lima Provincias y sin el Callao). Por eso hay tres cifras distintas: 28,21 %, 27,07 % y 33,86 % (Callao).</li>
+<li>Juntos es una transferencia al hogar. Su cobertura se mide aquí como el porcentaje de personas que viven en
+    hogares receptores, no como el porcentaje de personas elegibles.</li>
+</ul>
+</li>
+<li><strong>El cálculo con canasta fija 2006-2026</strong> es una aproximación de tipo Laspeyres con la participación de 2024. No
+    es un índice de precios de los pobres.</li>
+<li><strong>Calidad de los datos.</strong><ul>
+<li>19 hogares gastan en alimentos más que su gasto total. Se avisa en la validación y se dejan como están.</li>
+<li>El monto y la recepción de Juntos son autodeclarados. La ENAHO estima 1,04 millones de hogares receptores, 37 %
+    más que el padrón citado en el DT 309 (sección 8).</li>
+<li>No se calcularon errores estándar ni intervalos de confianza, porque no se usó el diseño muestral (estratos y
+    conglomerados). Las cifras departamentales y por subgrupo tienen más error que las nacionales.</li>
+<li>La mediana de Juntos de <code>indicadores.csv</code> es sin ponderar. La ponderada con <code>factor07</code> da lo mismo (S/ 1 202).</li>
+</ul>
+</li>
+<li><strong>Lo que no se puede medir con los módulos 34 y 02:</strong><ul>
+<li>inseguridad alimentaria (FIES, que empezó en 2025);</li>
+<li>educación, lengua materna, empleo e informalidad, vivienda y servicios (módulos 100, 300 y 500, no usados);</li>
+<li>salud y nutrición infantil;</li>
+<li>elegibilidad o clasificación socioeconómica para Juntos y cumplimiento de corresponsabilidades;</li>
+<li>el efecto causal de Juntos sobre la pobreza (no hay contrafactual);</li>
+<li>la pobreza «sin transferencias», que exige una simulación;</li>
+<li>la evolución de la pobreza en 2019 o 2025 (solo hay ENAHO 2024).</li>
+</ul>
+</li>
+<li><strong>Alcance.</strong> Es un análisis descriptivo con un año de encuesta. No evalúa el programa ni identifica causas.</li>
+<li><strong>Incidencias con las herramientas.</strong> No hubo errores de datos. El primer <code>graficar_serie</code> dejó cortados el título
+    y la nota al pie, porque la nota repetía la fuente que la herramienta ya añade; el gráfico se regeneró con un
+    título más corto y sin nota extra. El script de cruce falló una vez al imprimir «→» en la consola de Windows
+    (cp1252); se corrigió con <code>sys.stdout.reconfigure(encoding="utf-8")</code>.</li>
+</ul>
+<h2 id="7-reproducibilidad">7. Reproducibilidad</h2>
+<pre><code class="language-bash">cd tarea_4
+uv sync
+uv run python scripts/descargar_datos.py                               # ENAHO 2024 (módulos 34 y 02) y GeoJSON
+uv run python .claude/skills/limpiando-enaho/scripts/limpiar.py        # Skill limpiando-enaho
+uv run python .claude/skills/graficando-enaho/scripts/graficar.py area     # Skill graficando-enaho
+uv run python .claude/skills/graficando-enaho/scripts/graficar.py hogares
+uv run python .claude/skills/mapeando-enaho/scripts/mapear.py          # Skill mapeando-enaho
+uv run python scripts/cruce_y_contraste.py                             # cruce BCRP × ENAHO y contraste DT 309
+</code></pre>
+<p><strong>Llamadas al MCP <code>bcrp</code>, en orden:</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Argumentos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buscar_series</code></td>
+<td>«ipc lima metropolitana indice», «ipc alimentos y bebidas», «ipc 12 meses», «Dic.2021 = 100 IPC» (Mensual)</td>
+</tr>
+<tr>
+<td><code>resumen</code></td>
+<td><code>PN38705PM</code>, <code>PN39445PM</code> y <code>PN38706PM</code> (2006-12 a 2026-10); <code>PN01273PM</code> y <code>PN09822PM</code> (2007-01 a 2026-10 y 2024-01 a 2026-10); <code>PN38705PM</code> y <code>PN39445PM</code> (2024-12 a 2026-10)</td>
+</tr>
+<tr>
+<td><code>serie</code></td>
+<td><code>PN09823PM</code> 2026-10; <code>PN09822PM</code> y <code>PN01273PM</code> 2024-12</td>
+</tr>
+<tr>
+<td><code>valor_real</code></td>
+<td>(100, 2026-08 → 2006-12); (100, 2026-10 → 2006-12); (100, 2026-10 → 2006-12, <code>PN39445PM</code>); (100,1667, 2024-12 → 2006-12)</td>
+</tr>
+<tr>
+<td><code>graficar_serie</code></td>
+<td>[<code>PN38705PM</code>, <code>PN39445PM</code>], 2006-12 a 2026-10, <code>base_100=True</code>, archivo <code>bcrp_ipc_alimentos.png</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>scripts/cruce_y_contraste.py</code> vuelve a pedir esos valores al servidor MCP (<code>serie</code> y <code>valor_real</code>) en cada
+ejecución. La versión que escribió el agente los tenía copiados como constantes; se cambió en la verificación y la
+salida es idéntica (sección 9).</p>
+<p><strong>Archivos de salida:</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Archivos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Validación e indicadores</td>
+<td><code>salidas/validacion.txt</code>, <code>salidas/indicadores.csv</code></td>
+</tr>
+<tr>
+<td>Bases limpias</td>
+<td><code>salidas/hogares_2024.parquet</code>, <code>salidas/personas_2024.parquet</code></td>
+</tr>
+<tr>
+<td>Cruce y contraste</td>
+<td><code>salidas/cruce.csv</code>, <code>salidas/contraste_dt309_resultado.csv</code></td>
+</tr>
+<tr>
+<td>Comparación del mapa</td>
+<td><code>salidas/comparacion_mapa.csv</code></td>
+</tr>
+<tr>
+<td>Figuras</td>
+<td><code>figuras/bcrp_ipc_alimentos.png</code>, <code>figuras/enaho_pobreza_area.png</code>, <code>figuras/enaho_pobreza_hogares.png</code></td>
+</tr>
+<tr>
+<td>Mapa</td>
+<td><code>mapas/pobreza_departamento_2024.png</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Series usadas:</strong> <code>PN38705PM</code>, <code>PN39445PM</code>, <code>PN38706PM</code>, <code>PN01273PM</code>, <code>PN09822PM</code> y <code>PN09823PM</code>. Fuente:
+<code>https://estadisticas.bcrp.gob.pe/estadisticas/series/api/&lt;código&gt;/json/&lt;desde&gt;/&lt;hasta&gt;</code>.</p>
+<h2 id="8-contraste-con-cifras-publicadas">8. Contraste con cifras publicadas</h2>
+<p>Cifras publicadas: Trivelli y Mendoza (2026), DT IEP 309, según <code>referencias/contraste_dt309.csv</code>. Cálculo de la
+tabla: <code>salidas/contraste_dt309_resultado.csv</code>. Diferencia = cifra del informe − cifra publicada.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cifra</th>
+<th>Informe</th>
+<th>Publicada</th>
+<th>Fuente publicada (página)</th>
+<th>Diferencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pobreza nacional 2024 (%)</td>
+<td>27,579</td>
+<td>27,6</td>
+<td>INEI (2026a); DT 309, p. 9</td>
+<td>−0,021 pp</td>
+</tr>
+<tr>
+<td>Pobreza urbana 2024 (%)</td>
+<td>24,807</td>
+<td>24,8</td>
+<td>INEI (2026a); DT 309, p. 11</td>
+<td>+0,007 pp</td>
+</tr>
+<tr>
+<td>Pobreza rural 2024 (%)</td>
+<td>39,303</td>
+<td>39,3</td>
+<td>INEI (2026a); DT 309, p. 11</td>
+<td>+0,003 pp</td>
+</tr>
+<tr>
+<td>Pobreza extrema nacional 2024 (%)</td>
+<td>5,505</td>
+<td>5,5</td>
+<td>INEI (2026a); DT 309, p. 11</td>
+<td>+0,005 pp</td>
+</tr>
+<tr>
+<td>Pobreza extrema rural 2024 (%)</td>
+<td>15,518</td>
+<td>15,5</td>
+<td>INEI (2026a); DT 309, p. 11</td>
+<td>+0,018 pp</td>
+</tr>
+<tr>
+<td>Pobreza extrema Lima Metropolitana 2024 (%)</td>
+<td>3,285</td>
+<td>3,3</td>
+<td>INEI (2026a); DT 309, p. 11</td>
+<td>−0,015 pp</td>
+</tr>
+<tr>
+<td>Brecha de pobreza FGT1 2024 (% de la línea)</td>
+<td>7,207</td>
+<td>7,21</td>
+<td>ENAHO, procesamiento de las autoras; DT 309, Tabla A1, p. 66</td>
+<td>−0,003</td>
+</tr>
+<tr>
+<td>IPC Lima dic-2006 (dic. 2021 = 100)</td>
+<td>62,557</td>
+<td>62,56</td>
+<td>INEI (IPC Lima); DT 309, Anexo 2, p. 67</td>
+<td>−0,003</td>
+</tr>
+<tr>
+<td>IPC Lima ago-2026 (dic. 2021 = 100)</td>
+<td>120,716</td>
+<td>120,72</td>
+<td>INEI (IPC Lima); DT 309, Anexo 2, p. 67</td>
+<td>−0,004</td>
+</tr>
+<tr>
+<td>S/ 100 de Juntos (ago-2026) en soles de dic-2006</td>
+<td>51,822</td>
+<td>51,82</td>
+<td>Cálculo de las autoras con IPC Lima; DT 309, Anexo 2, p. 67</td>
+<td>+0,002</td>
+</tr>
+<tr>
+<td>Hogares con Juntos (miles)</td>
+<td>1 040,8 (2024, ENAHO)</td>
+<td>760 (2026, padrón)</td>
+<td>InfoMidis, 5-oct-2026; DT 309, p. 42</td>
+<td>+280,8 (+36,9 %), <strong>no comparable</strong></td>
+</tr>
+<tr>
+<td>No pobre vulnerable (%)</td>
+<td>31,80 (2024)</td>
+<td>32,8 (2025)</td>
+<td>INEI (2026a); DT 309, p. 15</td>
+<td>−1,00 pp, <strong>año distinto</strong></td>
+</tr>
+<tr>
+<td>Línea extrema / canasta básica alimentaria (S/ por persona al mes)</td>
+<td>255,57 (2024)</td>
+<td>260 (2025); 187 (2019)</td>
+<td>INEI (2026a); DT 309, p. 11</td>
+<td>−4,43 frente a 2025, <strong>año distinto</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Lectura del contraste.</strong></p>
+<ul>
+<li><strong>Las cifras de pobreza 2024 cuadran.</strong> Todas las diferencias son menores de 0,03 pp (la mayor es −0,021 pp), lo
+    que corresponde al redondeo a un decimal del documento. La fuente es la misma: los microdatos del INEI. La pobreza nacional
+    calculada por personas (<code>facpob07</code>) da 27,53 %, también dentro del redondeo.</li>
+<li><strong>El IPC y el valor real de Juntos cuadran exactamente.</strong> Las diferencias de milésimas son redondeo. El MCP
+    reproduce los S/ 51,82 del Anexo 2 del DT 309.</li>
+<li>
+<p><strong>Los hogares con Juntos no cuadran.</strong> La ENAHO 2024 da 1,04 millones de hogares y el padrón de octubre de 2026,
+    760 mil. Las posibles razones:</p>
+<ol>
+<li>año distinto: 2024 frente a 2026;</li>
+<li>fuente distinta: encuesta autodeclarada frente a registro administrativo;</li>
+<li>la encuesta capta a los hogares que declaran haber recibido la transferencia en su periodo de referencia,
+      aunque luego hayan salido del programa;</li>
+<li>error muestral del factor de expansión.</li>
+</ol>
+<p>Con estos datos no se puede decidir cuál de estas razones pesa más.
+- <strong>No pobre vulnerable y canasta.</strong> Los años no coinciden (2024 frente a 2025), así que la diferencia no valida ni
+invalida nada. La línea extrema de 2024 (S/ 255,57) queda entre la canasta de 2019 (S/ 187) y la de 2025
+(S/ 260), como se esperaría con precios al alza.
+- <strong>Cifras del DT 309 que no se pueden replicar aquí:</strong>
+- pobreza de 2019 (20,2 %) y de 2025 (25,7 %): no hay ENAHO de esos años en el proyecto;
+- pobreza sin Juntos ni Pensión 65 (29,6 %, CIES 2025): requiere una simulación;
+- inseguridad alimentaria (FIES 2025): el módulo no existe en 2024 ni está en los módulos 34 y 02.
+- <strong>Comparación cualitativa (indicadores y años distintos).</strong>
+- Por presencia de menores de 5 años, el DT 309 muestra más inseguridad alimentaria en esos hogares (34,2 % frente
+    a 29,3 %, 2025). Va en la misma dirección que la pobreza monetaria de este informe (43,8 % frente a 22,0 %,
+    2024).
+- Por jefatura no ocurre lo mismo. En el DT 309, la inseguridad alimentaria es mayor con jefa mujer (34,9 % frente
+    a 28,1 %), mientras que aquí la pobreza monetaria es algo menor (26,1 % frente a 28,3 %). No es una
+    contradicción: miden cosas distintas, en años distintos.</p>
+</li>
+</ul>
+<h2 id="9-verificacion-manual-de-cifras">9. Verificación manual de cifras</h2>
+<p>Esta sección se agregó <strong>después</strong> de la ejecución del agente. Cada afirmación se comprobó por un camino distinto
+del que usó el agente.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Afirmación del informe</th>
+<th>Valor del informe</th>
+<th>Verificación (fuente o procedimiento)</th>
+<th>Valor verificado</th>
+<th>¿Coincide?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IPC Lima dic-2006 y ago-2026 (<code>PN38705PM</code>)</td>
+<td>62,557 y 120,716</td>
+<td>Página web del BCRP (no la API): <code>estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN38705PM/html/2006-12/2006-12/</code> y <code>.../2026-08/2026-08/</code>; DT 309, Anexo 2</td>
+<td>62,56 y 120,72</td>
+<td>Sí (redondeo)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>S/ 100 de ago-2026 = S/ 51,82 de dic-2006</td>
+<td>51,822</td>
+<td>Con los dos valores de la fila 1: 100 × 62,56 / 120,72 = 51,82; el DT 309 (Anexo 2) da 51,82</td>
+<td>51,82</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Inflación a 12 meses oct-2026: total 5,25 % y alimentos 5,28 %</td>
+<td>5,251 y 5,284</td>
+<td>Página web del BCRP para <code>PN01273PM</code> y <code>PN09822PM</code>, Oct26</td>
+<td>5,25 y 5,28</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pobreza nacional 2024: 27,58 %</td>
+<td>27,579</td>
+<td>Informe del INEI (27,6 %, citado en el DT 309, p. 9) y <code>evaluacion/verificacion_independiente.py</code>, que lee el <code>.dta</code> sin la Skill</td>
+<td>27,6 y 27,579</td>
+<td>Sí (−0,02 pp)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Pobreza extrema rural 2024: 15,52 %</td>
+<td>15,518</td>
+<td>INEI (15,5 %, DT 309, p. 11) y cálculo independiente</td>
+<td>15,5 y 15,518</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>6</td>
+<td>72,7 % de los pobres vive en zonas urbanas</td>
+<td>72,74</td>
+<td>Cálculo independiente (<code>verificacion_independiente.py</code>); no hay cifra publicada para 2024</td>
+<td>72,744</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Mediana de Juntos en la ENAHO = S/ 54,88 de 2006 al mes</td>
+<td>54,883</td>
+<td>Cálculo independiente: mediana de <code>ingtpu01</code> (1 202) / 12 × IPC dic-2006 / IPC dic-2024</td>
+<td>54,883</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Cajamarca, el departamento más pobre, con 45,01 %</td>
+<td>45,007</td>
+<td>Referencia de la sesión 16 (<code>referencias/pobreza_departamento_2024.csv</code>) y cálculo independiente</td>
+<td>45,0 y 45,007</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>9</td>
+<td>«Para un hogar pobre el deterioro se parece más al medido con precios de alimentos» (primera versión de la interpretación 1)</td>
+<td>S/ 43,53</td>
+<td>Se recalculó con la canasta de los pobres: 100 / (1 + 0,974)</td>
+<td>S/ 50,65</td>
+<td><strong>No:</strong> se corrigió el texto</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Errores y correcciones encontrados en la verificación:</strong></p>
+<ul>
+<li>La interpretación 1 sacaba una conclusión que sus propias cifras no sostenían (fila 9); el texto se corrigió.</li>
+<li>El script del agente tenía copiados a mano los valores del BCRP. Ahora los pide al MCP en cada ejecución, con el
+    mismo resultado.</li>
+<li>El primer gráfico del BCRP salió con el título cortado. El agente lo regeneró, y además se corrigió la
+    herramienta <code>graficar_serie</code>, que ahora parte los títulos largos.</li>
+<li>No se encontraron cifras inventadas: cada número del informe está en <code>salidas/indicadores.csv</code>,
+    <code>salidas/cruce.csv</code>, <code>salidas/contraste_dt309_resultado.csv</code> o en una llamada al MCP registrada en
+    <code>evidencias_ia/integracion/ejecucion_agente.md</code>.</li>
+</ul>
+<hr />
+<h3 id="herramientas-usadas">Herramientas usadas</h3>
+<ul>
+<li><strong>MCP <code>bcrp</code>:</strong> <code>buscar_series</code> (4 búsquedas), <code>resumen</code> (9 llamadas), <code>serie</code> (3), <code>valor_real</code> (4) y
+    <code>graficar_serie</code> (2: la segunda corrigió el título).</li>
+<li><strong>Skills:</strong><ul>
+<li><code>limpiando-enaho</code>: limpieza, validación <strong>VÁLIDA</strong> e <code>indicadores.csv</code>.</li>
+<li><code>graficando-enaho</code>: <code>area</code> y <code>hogares</code>.</li>
+<li><code>mapeando-enaho</code>: mapa departamental, 25 de 25 departamentos, diferencia máxima con la referencia de 0,05 pp.</li>
+</ul>
+</li>
+<li><strong>Script propio:</strong> <code>scripts/cruce_y_contraste.py</code>, para el cruce y el contraste en Python, sin cuentas a mano.</li>
+</ul>
+    <p class="nota">Página generada el 08-11-2026 desde <code>informes/informe_final.md</code> con
+    <code>scripts/construir_sitio.py</code>. El texto es el del informe, sin cambios.</p>
+  </article>
+</main>
+<script>
+document.querySelector(".tema").addEventListener("click", function () {
+  var raiz = document.documentElement;
+  var oscuro = raiz.dataset.theme ? raiz.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  raiz.dataset.theme = oscuro ? "light" : "dark";
+  try { localStorage.setItem("tema", raiz.dataset.theme); } catch (e) {}
+});
+</script>
+</body>
+</html>

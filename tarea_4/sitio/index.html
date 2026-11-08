@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juntos, precios y pobreza</title>
+<meta name="description" content="Agente de investigación con Claude Code, un servidor MCP del BCRP y tres Skills de la ENAHO 2024: cuánto vale hoy la transferencia de Juntos, cuánto subieron los alimentos y dónde está la pobreza en el Perú.">
+<link rel="stylesheet" href="estilo.css">
+<script>try { var t = localStorage.getItem("tema"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="#">Tarea 4 <span>· Agente socioeconómico</span></a>
+    <nav class="menu" aria-label="Secciones">
+      <a class="opcional" href="#como-funciona">Cómo funciona</a>
+      <a href="#precios">Hallazgos</a>
+      <a href="#evaluacion">Evaluación</a>
+      <a href="informe.html">Informe completo</a>
+      <a class="opcional" href="https://github.com/diegosimemirror/Python-Intermedio-QLAB/tree/main/tarea_4">Código</a>
+    </nav>
+    <button class="tema" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">◐</button>
+  </div>
+</header>
+
+<main>
+<!-- ── Portada ─────────────────────────────────────────────── -->
+<div class="envoltura portada">
+  <p class="antetitulo">Python Intermedio · QLAB · Tarea 4 · Noviembre de 2026</p>
+  <h1>¿A quién protege hoy la política social en el Perú?</h1>
+  <p class="entrada">Un agente de investigación construido con Claude Code consulta los precios del Banco Central
+    de Reserva (BCRP) con un servidor MCP propio y procesa los microdatos de la Encuesta Nacional de Hogares
+    (ENAHO 2024) del INEI con tres Skills. Con esas herramientas respondió cuánto vale hoy la transferencia del
+    programa Juntos, cuánto subieron los alimentos y dónde está la pobreza.</p>
+  <p class="firma">Diego Enrique Sime Rendón · desarrollado con Claude Code · datos del BCRP hasta octubre de 2026
+    y de la ENAHO 2024</p>
+
+  <div class="cifras">
+    <div class="cifra"><b>S/&nbsp;51,47</b><span>valen, en soles de 2006, los S/&nbsp;100 mensuales de Juntos de octubre de 2026</span></div>
+    <div class="cifra"><b>27,6 %</b><span>de las personas era pobre en 2024: unos 9,5 millones</span></div>
+    <div class="cifra"><b>72,7 %</b><span>de los pobres vive en ciudades, aunque la tasa más alta es la rural (39,3 %)</span></div>
+    <div class="cifra"><b>15 %</b><span>de los pobres urbanos vive en un hogar con Juntos; entre los rurales, 49 %</span></div>
+  </div>
+</div>
+
+<!-- ── Cómo funciona ───────────────────────────────────────── -->
+<section id="como-funciona">
+  <div class="envoltura">
+    <p class="etiqueta">Cómo funciona</p>
+    <h2>Un modelo de lenguaje no sabe las cifras de 2026: hay que darle herramientas</h2>
+    <p class="seccion-intro">El modelo no tiene datos posteriores a su entrenamiento ni puede leer una encuesta de
+      100 mil personas de memoria. El proyecto le da dos tipos de herramientas y guarda cada llamada, para que cada
+      número del informe tenga una fuente que se pueda repetir.</p>
+
+    <div class="flujo">
+      <div class="paso">
+        <h3>1 · Fuentes oficiales</h3>
+        <div class="caja"><strong>API del BCRP</strong>Series mensuales de precios y producción. Último dato:
+          octubre de 2026.</div>
+        <div class="caja"><strong>ENAHO 2024 (INEI)</strong>Microdatos de 33 691 hogares y 108 664 residentes
+          (módulos 34 y 02).</div>
+      </div>
+      <div class="paso">
+        <h3>2 · Herramientas</h3>
+        <div class="caja destacada"><strong>Servidor MCP <code>bcrp</code></strong>5 herramientas:
+          <code>buscar_series</code>, <code>serie</code>, <code>resumen</code>, <code>valor_real</code> (propia) y
+          <code>graficar_serie</code>. Más un recurso y un prompt.</div>
+        <div class="caja destacada"><strong>3 Skills</strong><code>limpiando-enaho</code> limpia y valida,
+          <code>graficando-enaho</code> hace los gráficos y <code>mapeando-enaho</code>, el mapa.</div>
+      </div>
+      <div class="paso">
+        <h3>3 · Agente</h3>
+        <div class="caja"><strong>Claude Code</strong>Recibe la pregunta de investigación, elige qué herramienta
+          usar y en qué orden, y escribe el informe. En una sola ejecución hizo 22 llamadas al servidor MCP y usó las
+          3 Skills.</div>
+      </div>
+      <div class="paso">
+        <h3>4 · Resultados</h3>
+        <div class="caja"><strong>Informe</strong>4 hallazgos, contraste con cifras publicadas y verificación
+          manual.</div>
+        <div class="caja"><strong>Evaluación</strong>10 preguntas con y sin herramientas: 1 de 10 correctas frente
+          a 10 de 10.</div>
+      </div>
+    </div>
+
+    <div class="glosario">
+      <div><h3>¿Qué es un servidor MCP?</h3>
+        <p>Un programa que ofrece funciones a un asistente de IA con un protocolo estándar (Model Context
+          Protocol). Este envuelve la API del BCRP: el asistente pide «la serie PN38705PM de 2006 a 2026» y recibe
+          los datos con el enlace de su fuente.</p></div>
+      <div><h3>¿Qué es una Skill?</h3>
+        <p>Una carpeta con instrucciones (<code>SKILL.md</code>) y scripts que el asistente carga cuando la tarea
+          lo pide. Las de este proyecto guardan las reglas de la ENAHO: quién cuenta como residente, qué factor de
+          expansión usar y cómo validar el resultado.</p></div>
+      <div><h3>¿Por qué no basta con preguntarle al modelo?</h3>
+        <p>Porque no tiene los datos. Sin herramientas, en la evaluación se abstuvo en 9 de 10 preguntas (no
+          inventó cifras, pero tampoco respondió). Con ellas acertó las 10.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Hallazgo 1 ──────────────────────────────────────────── -->
+<section id="precios">
+  <div class="envoltura">
+    <p class="etiqueta">Hallazgo 1</p>
+    <h2>Los S/&nbsp;100 de Juntos valen hoy la mitad que en 2006</h2>
+    <p class="seccion-intro">Juntos paga S/&nbsp;100 al mes desde 2006, y la ENAHO 2024 lo confirma: la mediana que
+      declaran los hogares es S/&nbsp;1 202 al año. Mientras tanto, entre diciembre de 2006 y octubre de 2026, los
+      precios de Lima subieron 94,3 % y los de los alimentos, 129,7 %.</p>
+
+    <div class="tarjeta">
+      <p class="titulo-grafico">Desde 2006, los alimentos subieron más que el resto de precios</p>
+      <p class="subtitulo-grafico">Índice de precios al consumidor de Lima Metropolitana, diciembre de 2006 = 100.
+        Pasa el cursor (o el dedo) por el gráfico para ver cada mes.</p>
+      <div class="leyenda" id="ley-ipc"></div>
+      <div class="grafico" id="g-ipc"></div>
+      <p class="nota">Fuente: BCRP, series PN38705PM (IPC) y PN39445PM (IPC Alimentos y Bebidas), pedidas al
+        servidor MCP <code>bcrp</code> con la herramienta <code>serie</code>.</p>
+    </div>
+
+    <div class="tarjeta">
+      <p class="titulo-grafico">Calcula el valor real de una transferencia</p>
+      <p class="subtitulo-grafico">Hace lo mismo que la herramienta <code>valor_real</code> del servidor MCP, con
+        los mismos datos.</p>
+      <div class="calculadora">
+        <div class="campos">
+          <div class="campo"><label for="calc-monto">Monto que se paga (S/)</label>
+            <input id="calc-monto" type="number" min="1" step="1" value="100" inputmode="decimal"></div>
+          <div class="campo"><label for="calc-mes">Mes del pago: <span class="mes-elegido" id="calc-mes-txt"></span></label>
+            <input id="calc-mes" type="range" min="0" step="1"></div>
+          <div class="campo"><label for="calc-canasta">Medir con los precios de</label>
+            <select id="calc-canasta">
+              <option value="total">Todo el consumo (IPC de Lima)</option>
+              <option value="alimentos">Solo alimentos y bebidas</option>
+              <option value="pobres">La canasta de un hogar pobre (44,6 % alimentos)</option>
+            </select></div>
+        </div>
+        <div class="resultado-calc" aria-live="polite">
+          <b id="calc-valor"></b>
+          <p id="calc-texto"></p>
+          <div class="formula" id="calc-formula"></div>
+        </div>
+      </div>
+      <p class="nota">La canasta del hogar pobre mantiene fija la participación de los alimentos que da la ENAHO 2024
+        (44,6 %): aplica el IPC de alimentos a esa parte y el IPC sin alimentos (PN38706PM) al resto. Es una
+        aproximación, no un índice oficial.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Hallazgo 2 ──────────────────────────────────────────── -->
+<section id="alimentos">
+  <div class="envoltura">
+    <p class="etiqueta">Hallazgo 2</p>
+    <h2>Los alimentos pesan más en el gasto de los pobres</h2>
+    <div class="dos-columnas">
+      <div>
+        <ul class="puntos">
+          <li>Los hogares pobres destinan <strong>44,6 %</strong> de su gasto a alimentos; los no pobres,
+            <strong>33,2 %</strong>.</li>
+          <li>Con la inflación de alimentos de octubre de 2026 (5,28 % en 12 meses), los alimentos explican
+            <strong>2,36 puntos</strong> del alza anual del costo de vida de un hogar pobre, y 1,75 puntos en uno
+            no pobre.</li>
+          <li>En el último año eso casi no cambió el total, porque los alimentos y el resto subieron parecido (5,28 %
+            y 5,23 %). En veinte años sí importa: con la canasta de 2024 fija, el costo de vida subió
+            <strong>97,4 %</strong> para un hogar pobre y 90,7 % para uno no pobre.</li>
+        </ul>
+      </div>
+      <div class="tarjeta">
+        <p class="titulo-grafico">Parte del gasto del hogar que se va en alimentos</p>
+        <p class="subtitulo-grafico">% del gasto total, promedio ponderado, 2024</p>
+        <div class="grafico" id="g-alimentos"></div>
+        <p class="nota">Fuente: INEI, ENAHO 2024, módulo 34 (gasto del grupo 1 sobre gasto total), ponderado con
+          factor07 × mieperho. Skill <code>limpiando-enaho</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Hallazgo 3 ──────────────────────────────────────────── -->
+<section id="pobreza">
+  <div class="envoltura">
+    <p class="etiqueta">Hallazgo 3</p>
+    <h2>La tasa de pobreza es más alta en el campo, pero la mayoría de los pobres vive en ciudades</h2>
+    <p class="seccion-intro">En 2024, 27,6 % de las personas era pobre y 5,5 % pobre extrema. La pobreza rural
+      (39,3 %) supera a la urbana (24,8 %). Pero como en las ciudades vive mucha más gente, 72,7 % de los pobres es
+      urbano y 33,9 % vive en Lima Metropolitana.</p>
+
+    <div class="tarjeta">
+      <div class="dos-columnas mapa-y-barras">
+        <div>
+          <p class="titulo-grafico">Cajamarca, Loreto y Puno tienen la pobreza más alta</p>
+          <p class="subtitulo-grafico">% de personas en pobreza monetaria por departamento, 2024. Pasa el cursor por
+            el mapa o por las barras.</p>
+          <div class="grafico" id="g-mapa"></div>
+          <div id="ley-mapa"></div>
+        </div>
+        <div>
+          <div class="pestanas" id="orden-dep" role="group" aria-label="Orden de las barras">
+            <button type="button" data-orden="valor" aria-pressed="true">De mayor a menor</button>
+            <button type="button" data-orden="nombre" aria-pressed="false">Alfabético</button>
+          </div>
+          <div class="grafico" id="g-dep"></div>
+        </div>
+      </div>
+      <p class="nota">Fuente: INEI, ENAHO 2024, módulo 34, ponderado con factor07 × mieperho. 25 departamentos (Lima y
+        Callao por separado), unidos al mapa por el código de ubigeo, no por el nombre. Skill
+        <code>mapeando-enaho</code>. La diferencia máxima con la referencia oficial es de 0,05 puntos.</p>
+    </div>
+
+    <div class="tarjeta">
+      <p class="titulo-grafico">Los hogares con niños menores de 5 años son los más pobres</p>
+      <p class="subtitulo-grafico">% de personas en pobreza, 2024. Elige cómo agrupar.</p>
+      <div class="pestanas" id="pest-grupos" role="group" aria-label="Agrupar por"></div>
+      <div class="leyenda" id="ley-grupos"></div>
+      <div class="grafico" id="g-grupos"></div>
+      <p class="nota">Fuente: INEI, ENAHO 2024, ponderado con factor07 × mieperho (por sexo de la persona, con
+        facpob07). La pobreza extrema no se calculó por jefatura ni por sexo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Hallazgo 4 ──────────────────────────────────────────── -->
+<section id="juntos">
+  <div class="envoltura">
+    <p class="etiqueta">Hallazgo 4</p>
+    <h2>Juntos llega a la mitad de los pobres rurales, pero a 15 % de los urbanos</h2>
+    <div class="dos-columnas">
+      <div class="tarjeta">
+        <p class="titulo-grafico">Personas que viven en un hogar que recibe Juntos</p>
+        <p class="subtitulo-grafico">% de cada grupo, 2024</p>
+        <div class="grafico" id="g-juntos"></div>
+        <p class="nota">Fuente: INEI, ENAHO 2024 (hogares con ingtpu01 &gt; 0), ponderado con factor07 × mieperho.
+          Cálculo de <code>scripts/cruce_y_contraste.py</code>.</p>
+      </div>
+      <div>
+        <ul class="puntos">
+          <li>La ENAHO estima <strong>1,04 millones de hogares</strong> con Juntos. Uno de cada cuatro pobres
+            (24,3 %) vive en uno de ellos.</li>
+          <li>El programa llega más donde la pobreza es más intensa: al campo y a la pobreza extrema. Pero la
+            mayoría de los pobres es urbana, y a ellos llega poco.</li>
+          <li>Tampoco llega a la mayoría de los pobres con niños pequeños (31,9 %), el tipo de hogar con más
+            pobreza.</li>
+          <li>La mitad de las personas en hogares con Juntos no es pobre según la línea de 2024. Eso no prueba una
+            mala focalización: el programa no usa esa línea, y la propia transferencia puede sacar a un hogar de la
+            pobreza.</li>
+        </ul>
+        <p class="nota">Son asociaciones, no causas: con una sola encuesta no se puede medir el efecto del
+          programa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Evaluación ──────────────────────────────────────────── -->
+<section id="evaluacion">
+  <div class="envoltura">
+    <p class="etiqueta">Evaluación</p>
+    <h2>Con las herramientas, de 1 a 10 respuestas correctas</h2>
+    <p class="seccion-intro">Las mismas 10 preguntas, cada una en una sesión nueva de Claude Code (modelo Sonnet),
+      sin herramientas y con el servidor MCP y las Skills. Las respuestas esperadas se calcularon por otro camino y
+      se guardaron en Git antes de evaluar.</p>
+    <div class="versus" id="eval-cifras"></div>
+    <div class="tarjeta">
+      <div class="pestanas" id="pest-eval" role="group" aria-label="Tipo de pregunta"></div>
+      <div class="tabla"><table id="t-eval">
+        <thead><tr><th>Pregunta</th><th class="num">Esperada</th><th>Sin herramientas</th><th>Con MCP y Skills</th>
+          <th class="num">Segundos</th><th>Qué usó</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="nota">Sin herramientas, el modelo no inventó cifras: se abstuvo cuando no tenía el dato. Solo
+        respondió la pobreza de 2024, que el INEI publicó en 2025 y el modelo recordaba. Abre cada pregunta para ver
+        la respuesta completa. Detalle en
+        <a href="https://github.com/diegosimemirror/Python-Intermedio-QLAB/blob/main/tarea_4/evaluacion/comparacion.md"><code>evaluacion/comparacion.md</code></a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Verificación ────────────────────────────────────────── -->
+<section id="verificacion">
+  <div class="envoltura">
+    <p class="etiqueta">Verificación</p>
+    <h2>Cada cifra clave se comprobó por otro camino</h2>
+    <div class="dos-columnas">
+      <ul class="puntos verificacion">
+        <li><span class="marca-ok">✓</span> IPC de diciembre de 2006 y de agosto de 2026: página web del BCRP (no la
+          API) y Anexo 2 del documento de Trivelli y Mendoza (2026).</li>
+        <li><span class="marca-ok">✓</span> S/&nbsp;100 de agosto de 2026 = S/&nbsp;51,82 de 2006: el mismo valor que publica
+          ese documento.</li>
+        <li><span class="marca-ok">✓</span> Inflación a 12 meses de octubre de 2026 (5,25 % total y 5,28 % alimentos):
+          página web del BCRP.</li>
+        <li><span class="marca-ok">✓</span> Pobreza nacional, extrema rural y del departamento más pobre: cifras del
+          INEI y un script que lee los microdatos sin las Skills.</li>
+        <li><span class="marca-ok">✓</span> 72,7 % de pobres urbanos y mediana de Juntos en soles de 2006: cálculo
+          independiente.</li>
+      </ul>
+      <ul class="puntos verificacion">
+        <li><strong>✗ Una conclusión del agente no se sostenía.</strong> Decía que, para un hogar pobre, la pérdida se
+          parecía más a la medida solo con alimentos (S/&nbsp;43,53). Con la canasta de los pobres da S/&nbsp;50,65, más cerca
+          del IPC total. Se corrigió el informe.</li>
+        <li>El script que escribió el agente tenía las cifras del BCRP copiadas a mano. Ahora las pide al servidor
+          MCP en cada ejecución, con el mismo resultado.</li>
+        <li>Tabla completa en la <a href="informe.html#9-verificacion-manual-de-cifras">sección 9 del informe</a>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── Figuras originales ──────────────────────────────────── -->
+<section id="figuras">
+  <div class="envoltura">
+    <p class="etiqueta">Figuras</p>
+    <h2>Las imágenes que produjeron las herramientas</h2>
+    <p class="seccion-intro">Los gráficos interactivos de esta página usan los mismos datos. Estas son las imágenes
+      originales, generadas por el servidor MCP y las Skills. Haz clic para verlas en tamaño completo.</p>
+    <div class="galeria">
+      <figure><a href="figuras/bcrp_ipc_alimentos.png"><img src="figuras/bcrp_ipc_alimentos.png" alt="IPC total y de alimentos, diciembre de 2006 = 100" loading="lazy"></a>
+        <figcaption>IPC total y de alimentos. Servidor MCP, <code>graficar_serie</code>.</figcaption></figure>
+      <figure><a href="mapas/pobreza_departamento_2024.png"><img src="mapas/pobreza_departamento_2024.png" alt="Mapa de pobreza por departamento, 2024" loading="lazy"></a>
+        <figcaption>Mapa de pobreza por departamento. Skill <code>mapeando-enaho</code>.</figcaption></figure>
+      <figure><a href="figuras/enaho_pobreza_departamentos.png"><img src="figuras/enaho_pobreza_departamentos.png" alt="Pobreza por departamento, barras" loading="lazy"></a>
+        <figcaption>Pobreza por departamento. Skill <code>graficando-enaho</code>.</figcaption></figure>
+      <figure><a href="figuras/enaho_pobreza_area.png"><img src="figuras/enaho_pobreza_area.png" alt="Pobreza por área" loading="lazy"></a>
+        <figcaption>Pobreza por área. Skill <code>graficando-enaho</code>.</figcaption></figure>
+      <figure><a href="figuras/enaho_pobreza_hogares.png"><img src="figuras/enaho_pobreza_hogares.png" alt="Pobreza por tipo de hogar" loading="lazy"></a>
+        <figcaption>Pobreza por tipo de hogar. Skill <code>graficando-enaho</code>.</figcaption></figure>
+      <figure><a href="figuras/enaho_pobreza_sexo.png"><img src="figuras/enaho_pobreza_sexo.png" alt="Pobreza por sexo" loading="lazy"></a>
+        <figcaption>Pobreza por sexo. Skill <code>graficando-enaho</code>.</figcaption></figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="envoltura columnas">
+    <div>
+      <p>Tarea 4 del curso Python Intermedio (QLAB). Análisis descriptivo: muestra asociaciones, no causas.</p>
+      <p><strong>Fuentes.</strong> BCRP, Estadísticas (series PN38705PM, PN39445PM, PN38706PM, PN01273PM,
+        PN09822PM y PN09823PM). INEI, ENAHO 2024, módulos 34 y 02. Trivelli, C. y Mendoza, M. (2026). Repensar y
+        rearmar la política social para retomar la senda perdida. IEP, Documento de Trabajo 309 (solo para
+        contrastar).</p>
+      <p class="nota" id="pie-generado"></p>
+    </div>
+    <div>
+      <p><a href="informe.html">Informe completo</a><br>
+        <a href="https://github.com/diegosimemirror/Python-Intermedio-QLAB/tree/main/tarea_4">Código y datos en GitHub</a><br>
+        <a href="https://github.com/diegosimemirror/Python-Intermedio-QLAB/blob/main/tarea_4/README.md">Cómo reproducirlo (README)</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="datos.js"></script>
+<script src="graficos.js"></script>
+</body>
+</html>

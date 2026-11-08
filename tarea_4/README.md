@@ -4,7 +4,8 @@
 transferencia de Juntos y cuánto subieron los alimentos frente al resto de precios (BCRP, 2006-2026), y dónde y en
 qué hogares se concentra la pobreza monetaria en 2024 (ENAHO 2024).
 
-Informe: [`informes/informe_final.md`](informes/informe_final.md) · Enunciado: issue #201 de
+Informe: [`informes/informe_final.md`](informes/informe_final.md) · Sitio web con los resultados:
+<https://diegosimemirror.github.io/Python-Intermedio-QLAB/tarea_4/> (sección 13) · Enunciado: issue #201 de
 [d2cml-ai/Data-Science-Python](https://github.com/d2cml-ai/Data-Science-Python/issues/201).
 
 ## 1. Objetivo
@@ -108,6 +109,7 @@ claude -p "$(cat informes/prompt_agente.md)" --model opus --mcp-config .mcp.json
   --allowedTools "mcp__bcrp,Skill,Bash,Read,Write,Edit,Glob,Grep" --disallowedTools "WebSearch,WebFetch" \
   --output-format stream-json --verbose > evidencias_ia/integracion/ejecucion_agente.jsonl
 uv run python scripts/jsonl_a_md.py evidencias_ia/integracion/ejecucion_agente.jsonl
+uv run python scripts/construir_sitio.py                              # datos del sitio web (sección 13)
 ```
 
 ## 9. Resultados de la evaluación
@@ -171,3 +173,27 @@ Todo se desarrolló con Claude Code. Ver [`evidencias_ia/`](evidencias_ia/):
 - `mcp/` y `skills/`: guía de dónde está cada parte del desarrollo y sus correcciones.
 - `integracion/`: la ejecución del agente con MCP y Skills.
 - `evaluacion/`: las 20 corridas del experimento A/B.
+
+## 13. Sitio web (complemento opcional)
+
+Un tablero para explorar los resultados, que es una de las ideas de innovación del enunciado. Se publica con GitHub
+Pages en <https://diegosimemirror.github.io/Python-Intermedio-QLAB/tarea_4/>. No lo escribió el agente: se hizo en la
+sesión de desarrollo, después de la ejecución integrada. Usa solo salidas que ya existen, así que no agrega cifras
+nuevas.
+
+| Archivo | Qué es |
+|---|---|
+| `sitio/index.html` | resumen interactivo con los 4 hallazgos, cómo funciona el agente, la evaluación A/B, la verificación y las figuras originales |
+| `sitio/informe.html` | `informes/informe_final.md` convertido a HTML, sin cambios de texto |
+| `sitio/graficos.js`, `sitio/estilo.css` | gráficos en SVG sin librerías (tooltip, mapa enlazado con las barras, calculadora de valor real) y estilos con modo claro y oscuro |
+| `sitio/datos.js` | datos de los gráficos; lo genera `scripts/construir_sitio.py` |
+| `scripts/construir_sitio.py` | pide el IPC al servidor MCP (`serie`), lee `salidas/` y `evaluacion/resultados.csv`, simplifica el GeoJSON a trazos SVG, convierte el informe y copia las figuras |
+| `../.github/workflows/sitio-tarea4.yml` | publica `sitio/` en GitHub Pages cuando cambia en `main`. Está en la raíz del repositorio porque GitHub solo lee los flujos de trabajo de ahí |
+
+La calculadora repite en el navegador la cuenta de `valor_real` (`monto × IPC[dic-2006] / IPC[mes]`) con las mismas
+series. Agrega una tercera medida: la canasta de un hogar pobre, con la participación de alimentos de la ENAHO
+(44,6 %) fija. Con S/ 100 de octubre de 2026 da S/ 51,47 con el IPC total, S/ 43,53 solo con alimentos y S/ 50,65 con
+la canasta del hogar pobre, las mismas cifras de `salidas/cruce.csv`.
+
+Para verlo en local, basta con abrir `sitio/index.html` en el navegador. Para publicarlo, hay que activar Pages una
+sola vez: *Settings → Pages → Build and deployment → Source: GitHub Actions*.

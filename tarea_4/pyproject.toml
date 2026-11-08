@@ -13,7 +13,10 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest"]
+dev = [
+    "markdown>=3.11.3",
+    "pytest",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["mcp"]
