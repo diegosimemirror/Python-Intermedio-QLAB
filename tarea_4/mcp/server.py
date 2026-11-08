@@ -282,16 +282,20 @@ def graficar_serie(codigos: list[str], desde: str, hasta: str, titulo: str, arch
                     textcoords="offset points", va="center", color="#0b0b0b")
         ultimos[cod] = {"periodo": s.index[-1], "valor": round(float(s.iloc[-1]), 4)}
         fuentes.append(url)
-    ax.set_title(titulo, fontsize=11, loc="left", fontweight="bold", color="#0b0b0b")
+    import textwrap   # títulos y notas largas en varias líneas (antes se cortaban en el borde)
+    ax.set_title(textwrap.fill(titulo, 80), fontsize=11, loc="left", fontweight="bold", color="#0b0b0b")
     ax.set_ylabel(f"Índice ({desde} = 100)" if base_100 else ficha["nombre"].split("(")[-1].rstrip(")"))
     ax.grid(color="#e1e0d9", lw=0.6)
     ax.tick_params(colors="#898781", labelsize=8)
     ax.spines[["top", "right", "left"]].set_visible(False)
     ax.spines["bottom"].set_color("#c3c2b7")
     ax.legend(fontsize=8, frameon=False)
-    fig.text(0.01, 0.01, f"Fuente: BCRP, series {', '.join(codigos)} ({desde} a {hasta}). {nota}".strip(),
-             fontsize=7, color="#52514e")
-    fig.tight_layout(rect=(0, 0.03, 1, 1))
+    nota = nota.strip()
+    if nota.lower().startswith("fuente"):          # el pie ya dice la fuente y el eje la base: no repetirlas
+        nota = ""
+    pie = textwrap.fill(f"Fuente: BCRP, series {', '.join(codigos)} ({desde} a {hasta}). {nota}".strip(), 150)
+    fig.text(0.01, 0.01, pie, fontsize=7, color="#52514e")
+    fig.tight_layout(rect=(0, 0.02 + 0.02 * pie.count("\n"), 1, 1))
     ruta = FIGURAS / Path(archivo).name
     fig.savefig(ruta, dpi=200, facecolor="#fcfcfb")
     plt.close(fig)
